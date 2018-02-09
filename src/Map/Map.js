@@ -66,6 +66,11 @@ export default class Transport_Map extends React.Component{
                 })
             })
         }
+        else{
+            this.setState({
+                loading: false
+            })
+        }
     }
 
     componentWillReceiveProps(nextProps){
@@ -86,8 +91,7 @@ export default class Transport_Map extends React.Component{
                 <Map
                     style={{height: "575px"}}
                     animate={this.state.animate}
-                    center={this.props.latlng}
-
+                    center={[30.3, -97.7]}
                     zoom={12}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
