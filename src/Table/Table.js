@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css'
-import {rename, filterData, getData} from '../Helpers'
+import {rename, filterData, format} from '../Helpers'
 
 export default  class Table extends React.Component{
     constructor(props){
@@ -48,16 +48,30 @@ export default  class Table extends React.Component{
 
 
     render(){
-        console.log(this.props.filter)
-        console.log(this.props.filter.length)
         let columns = this.props.headers.map((header) => {
             return {
                 Header: rename(header.name),
-                accessor: header.name
+                accessor: header.name,
+                Cell: (header.opts || header.format) ? row => (
+                   !header.format ?
+                       <span>
+                           {header.opts[row.value]}
+                       </span>
+                       :
+                       (header.format && header.opts) ?
+                           <span>
+                               {format(header.format, header.opts[row.value])}
+                           </span>
+                           :
+                           <span>
+                               {format(header.format, row.value)}
+                           </span>
+                ): null
             }
         });
+
         return (
-            <ReactTable style={{height: '400px'}} showPagination={false} minRows={0}
+            <ReactTable style={{height: '400px'}} showPagination={false} minRows={0} defaultPageSize={1000}
                 columns={columns}
                 data={this.props.data ? this.props.data : this.props.filter.length > 0 ? this.state.filteredData : this.state.data }
                 getTdProps={(state, rowInfo) => {

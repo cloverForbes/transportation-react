@@ -1,4 +1,5 @@
-import _ from 'lodash'
+import _ from 'lodash';
+import React from 'react';
 
 export function rename(name) {
      let names = (name.split("_"));
@@ -24,7 +25,7 @@ export function dataContains(data, filter){
 /*Takes an array of data and an array of filters and applies each filter the the data array*/
 export function filterData(data, filters) {
     let filteredData = [];
-    if (filters.length !== 0 && !filters.includes("")) {
+    if (filters.length !== 0) {
         let tmpArray = [];
         filters.forEach(filter => {
             tmpArray.push(_.filter(data, (o) => {
@@ -50,18 +51,57 @@ export function filterData(data, filters) {
             }
         }
 
-        if (tmpArray.length > 1) {
+        /*if (tmpArray.length > 1) {
             filteredData = _.filter(filteredData, (o) => {
+                console.log(o);
                 return dataContains(o.location_name, this.props.filter[0]) !== -1
             });
-        }
+        }*/
         return filteredData;
     }
     return data
 }
 
 
-export function getData(url) {
+export function format(type, data) {
+    switch(type) {
+        case 'date' :
+            return formatDate(data);
+    }
+}
 
+function formatDate(date) {
+    let dateObj = new Date(date * 1000);
+    return `${dateObj.getDate()} ${convertMonth(dateObj.getMonth())} ${dateObj.getHours()}:${dateObj.getMinutes()}`
+}
 
+function convertMonth(month) {
+    let months = {
+        0: 'January',
+        1: 'February',
+        2: 'March',
+        3: 'April',
+        4: 'May',
+        5: 'June',
+        6: 'July',
+        7: 'August',
+        8: 'September',
+        9: 'October',
+        10: 'November',
+        11: 'December'
+    };
+    return (months[month])
+}
+
+export function createArray(obj){
+    let keys = Object.keys(obj);
+    let values = Object.values(obj);
+    let newArray = [];
+    for(let x = 0; x < keys.length; x++){
+        let key = keys[x];
+        let value = values[x];
+        newArray.push({key: key, value: value})
+    }
+
+    return newArray;
 }

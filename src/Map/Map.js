@@ -85,13 +85,12 @@ export default class Transport_Map extends React.Component{
 
 
     render(){
-        console.log(this.state.markers)
         return !this.state.loading ? (
             <div style={{ textAlign: 'center'}}>
                 <Map
                     style={{height: "575px"}}
                     animate={this.state.animate}
-                    center={[30.3, -97.7]}
+                    center={this.props.center}
                     zoom={12}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -115,7 +114,6 @@ export default class Transport_Map extends React.Component{
                 <div className="card no-border">
                     <img className="spinner" src={logo} alt="logo"/>
                 </div>
-
             )
     }
 }
