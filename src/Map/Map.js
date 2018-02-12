@@ -86,10 +86,6 @@ export default class Transport_Map extends React.Component{
         }
     };
 
-    handleMarkerClick(e){
-    };
-
-
     render(){
         return !this.state.loading ? (
             <div style={{ textAlign: 'center'}}>
@@ -104,7 +100,7 @@ export default class Transport_Map extends React.Component{
                     {this.state.markers.map( (marker, i) => {
                         let open = this.props.marker.signal_id === marker.signal_id;
                         return (
-                        <Marker info={marker} ref={open ? this.simulateClick : null} open={open}  onClick={this.handleMarkerClick} key={i} position={[Number(marker.location_latitude), Number(marker.location_longitude)]}>
+                        <Marker format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} position={[Number(marker.location_latitude), Number(marker.location_longitude)]}>
                         </Marker>
                         );
                     })}

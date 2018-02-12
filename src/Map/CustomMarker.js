@@ -1,12 +1,12 @@
 import React from 'react';
-import {Marker} from 'react-leaflet'
+import ReactDOMServer from 'react-dom/server'
+import {Marker, Popup} from 'react-leaflet'
+import PopupFrame from './PopupFrame'
 
 export default class CustomMarker extends Marker{
     componentWillMount(){
         super.componentWillMount();
-        console.log(this.props.info);
-        this.leafletElement.bindPopup(
-            `<div>${this.props.info.location_name}<br/>${this.props.info.operation_state}</div>`);
+        this.leafletElement.bindPopup(ReactDOMServer.renderToStaticMarkup(<PopupFrame format={this.props.format} info={this.props.info}/>))
     }
 
 

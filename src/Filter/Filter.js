@@ -9,6 +9,10 @@ export default class Filter extends React.Component{
             value: '',
             opts: this.props.opts ? createArray(this.props.opts) : ''
         }
+        if(this.props.opts){
+            console.log(this.props.opts)
+            console.log(createArray(this.props.opts))
+        }
 
     }
 
