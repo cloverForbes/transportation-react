@@ -28,10 +28,18 @@ export default class Filter extends React.Component{
     handleToggle = e => {
         const name = this.props.name;
         const value = e.target.value;
-        this.setState({
-            value: value
-        })
-        this.props.pullData({name, value}, this.props.myKey)
+        if(this.state.value === value){
+            this.setState({
+                value: ''
+            })
+            this.props.pullData('', this.props.myKey);
+        }
+        else {
+            this.setState({
+                value: value
+            })
+            this.props.pullData({name, value}, this.props.myKey)
+        }
     }
 
     render(){
@@ -42,7 +50,7 @@ export default class Filter extends React.Component{
                     <label>{this.props.label}</label>
                     {this.state.opts.map((opt, key) => {
                        return (
-                           <div>
+                           <div key={key}>
                                <input  checked={this.state.value === opt.key} onClick={this.handleToggle} key={key} value={opt.key}  type="checkbox" name={opt.value}/>{opt.value}<br/>
                            </div>
                        );

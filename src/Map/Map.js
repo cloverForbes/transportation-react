@@ -1,10 +1,11 @@
 import React from 'react';
-import { Map, Marker, TileLayer, Popup } from 'react-leaflet'
+import { Map, TileLayer, Popup} from 'react-leaflet';
+import Marker from './CustomMarker';
 import L from 'leaflet';
-import mark from './electrician.svg'
-import pin from './female.svg'
-import './Map.css'
-import logo from  '../Card/logo.svg'
+import mark from './electrician.svg';
+import pin from './female.svg';
+import './Map.css';
+import logo from  '../Card/logo.svg';
 
 let greenIcon = L.icon({
     iconUrl: mark,
@@ -34,15 +35,12 @@ export default class Transport_Map extends React.Component{
             animate: true,
             defaultPin: mapPin,
             markers: this.props.markers,
-            loading: true
+            loading: true,
+            latlng: this.props.center
         }
     }
 
-    handleMarkerClick = e => {
-            this.setState({
-                latlng: e.latlng,
-            })
-    };
+
 
 
     componentWillMount(){
@@ -82,6 +80,14 @@ export default class Transport_Map extends React.Component{
 
     }
 
+    simulateClick = (e) => {
+        if(e){
+            e.leafletElement.openPopup();
+        }
+    };
+
+    handleMarkerClick(e){
+    };
 
 
     render(){
@@ -96,13 +102,9 @@ export default class Transport_Map extends React.Component{
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     {this.state.markers.map( (marker, i) => {
+                        let open = this.props.marker.signal_id === marker.signal_id;
                         return (
-                        <Marker onClick={this.handleMarkerClick} key={i} position={{lat: marker.location_latitude , lng: marker.location_longitude}}>
-                            <Popup>
-                                <span>
-                                    {marker.info}
-                                </span>
-                            </Popup>
+                        <Marker info={marker} ref={open ? this.simulateClick : null} open={open}  onClick={this.handleMarkerClick} key={i} position={[Number(marker.location_latitude), Number(marker.location_longitude)]}>
                         </Marker>
                         );
                     })}

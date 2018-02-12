@@ -80,7 +80,7 @@ export default  class Table extends React.Component{
                             if(rowInfo) {
                                 let latitude = rowInfo.original.location_latitude;
                                 let longitude = rowInfo.original.location_longitude;
-                                this.props.getPosition([latitude, longitude]);
+                                this.props.getPosition(rowInfo.original);
                                 if (handleOriginal) {
                                     handleOriginal()
                                 }
