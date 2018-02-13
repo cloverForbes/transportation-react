@@ -60,7 +60,7 @@ export default class Filter extends React.Component{
                 :
 
                 <div className="SearchBar">
-                    {/*<label>{this.props.label}</label>*/}
+                    <label>{this.props.label}</label>
                     <input style={{width: "100%"}} type="text" value={this.state.value} onChange={this.onSearchChange}/>
                 </div>
 
