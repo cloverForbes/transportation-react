@@ -2,11 +2,6 @@ import React from 'react';
 import {format} from '../Helpers'
 
 export default class PopupFrame extends React.Component{
-    constructor(props){
-        super(props);
-        console.log(this.props);
-    }
-
     render(){
         let signal = this.props.info;
         return(

@@ -90,7 +90,7 @@ export default class Transport_Map extends React.Component{
         return !this.state.loading ? (
             <div style={{ textAlign: 'center'}}>
                 <Map
-                    style={{height: "575px"}}
+                    /*style={{height: "575px"}}*/
                     animate={this.state.animate}
                     center={this.props.center}
                     zoom={12}>
@@ -98,9 +98,9 @@ export default class Transport_Map extends React.Component{
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     {this.state.markers.map( (marker, i) => {
-                        let open = this.props.marker.signal_id === marker.signal_id;
+                        let open = this.props.marker[this.props.match] === marker[this.props.match];
                         return (
-                        <Marker format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} position={[Number(marker.location_latitude), Number(marker.location_longitude)]}>
+                        <Marker format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} position={{lat:Number(marker.location_latitude), lng: Number(marker.location_longitude)}}>
                         </Marker>
                         );
                     })}
