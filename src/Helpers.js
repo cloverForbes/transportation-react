@@ -107,7 +107,7 @@ export function createArray(obj){
 }
 
 export function indexOfValue(arr,value){
-    let index = null
+    let index = null;
     arr.forEach((item, j) => {
         if(item.value === value){
             index = j;

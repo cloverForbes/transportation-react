@@ -1,6 +1,8 @@
 import React from 'react';
 import { Map, TileLayer, Popup} from 'react-leaflet';
 import Marker from './CustomMarker';
+import Markers from './Markers'
+import Circle from './CustomCircleMarker'
 import L from 'leaflet';
 import mark from './electrician.svg';
 import pin from './female.svg';
@@ -80,11 +82,6 @@ export default class Transport_Map extends React.Component{
 
     }
 
-    simulateClick = (e) => {
-        if(e){
-            e.leafletElement.openPopup();
-        }
-    };
 
     render(){
         return !this.state.loading ? (
@@ -97,13 +94,7 @@ export default class Transport_Map extends React.Component{
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {this.state.markers.map( (marker, i) => {
-                        let open = this.props.marker[this.props.match] === marker[this.props.match];
-                        return (
-                        <Marker format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} position={{lat:Number(marker.location_latitude), lng: Number(marker.location_longitude)}}>
-                        </Marker>
-                        );
-                    })}
+                    <Markers marker={this.props.marker} type={"markers"} color={this.props.color} match={this.props.match} markers={this.state.markers} headers={this.props.headers}/>
                 </Map>
             </div>
         )
