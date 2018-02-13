@@ -105,3 +105,13 @@ export function createArray(obj){
 
     return newArray;
 }
+
+export function indexOfValue(arr,value){
+    let index = null
+    arr.forEach((item, j) => {
+        if(item.value === value){
+            index = j;
+        }
+    })
+    return index
+}
