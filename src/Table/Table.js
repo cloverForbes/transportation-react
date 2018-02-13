@@ -50,7 +50,7 @@ export default  class Table extends React.Component{
     render(){
         let columns = this.props.headers.map((header) => {
             return {
-                Header: rename(header.name),
+                Header: header.alt,
                 accessor: header.name,
                 Cell: (header.opts || header.format) ? row => (
                    !header.format ?
