@@ -24,13 +24,11 @@ export function dataContains(data, filter){
 
 /*Takes an array of data and an array of filters and applies each filter the the data array*/
 export function filterData(data, filters) {
-    console.log(filters)
     let filteredData = [];
     if (filters.length !== 0) {
         let tmpArray = [];
         filters.forEach(filter => {
             tmpArray.push(_.filter(data, (o) => {
-                console.log(filter);
                 if (typeof(filter) === "string") {
                     if(o.location_name){
                         return dataContains(o.location_name, filter) >= 0
@@ -118,4 +116,33 @@ export function indexOfValue(arr,value){
         }
     })
     return index
+}
+
+export function getMarkersFromGroup(group,markersURL,id, state){
+    let len = group.length;
+    let dataArr = [];
+    group.forEach(i => {
+            let url = `${markersURL}?$query=SELECT * WHERE ${id}=${i[id]}`;
+            let headers = new Headers();
+            let myInit = {
+                method: 'GET',
+                headers: headers,
+                mode: 'cors',
+                cache: 'default'
+            };
+
+            fetch(url, myInit).then(function (res) {
+                return res;
+            }).then((resp) => {
+                return resp.json();
+            }).then(data => {
+                dataArr.push(data);
+                if(dataArr.length === len){
+                    state.setState({
+                        markers : _.flattenDeep(dataArr),
+                    })
+                }
+            });
+    });
+
 }
