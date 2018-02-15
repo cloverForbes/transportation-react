@@ -54,9 +54,11 @@ export default  class Table extends React.Component{
                 accessor: header.name,
                 Cell: (header.opts || header.format) ? row => (
                    !header.format ?
+                       <div>
                        <span style={{backgroundColor: header.display_opts[row.value].color}}>
                            <i className={[`fa fa-${header.display_opts[row.value].class}`]}>{header.opts[row.value]}</i>
                        </span>
+                       </div>
                        :
                        (header.format && header.opts) ?
                            <span style={{backgroundColor: header.display_opts[row.value]}}>

@@ -92,7 +92,7 @@ export default class Transport_Map extends React.Component{
                     center={this.props.center}
                     zoom={12}>
                     <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
                     />
                     <Markers marker={this.props.marker} type={this.props.marker_type} color={this.props.color} match={this.props.match} markers={this.state.markers} headers={this.props.headers}/>
                 </Map>

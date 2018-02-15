@@ -24,13 +24,17 @@ export function dataContains(data, filter){
 
 /*Takes an array of data and an array of filters and applies each filter the the data array*/
 export function filterData(data, filters) {
+    console.log(filters)
     let filteredData = [];
     if (filters.length !== 0) {
         let tmpArray = [];
         filters.forEach(filter => {
             tmpArray.push(_.filter(data, (o) => {
+                console.log(filter);
                 if (typeof(filter) === "string") {
-                    return dataContains(o.location_name, filter) >= 0
+                    if(o.location_name){
+                        return dataContains(o.location_name, filter) >= 0
+                    }
                 }
                 if (typeof(filter) === "object") {
                     return o[filter.name] === filter.value
