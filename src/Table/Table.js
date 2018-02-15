@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css'
-import {rename, filterData, format} from '../Helpers'
+import {getData, filterData, format} from '../Helpers'
 
 export default  class Table extends React.Component{
     constructor(props){
@@ -16,23 +16,7 @@ export default  class Table extends React.Component{
 
     componentWillMount(){
         if(this.props.url){
-            let headers = new Headers();
-            let myInit = {
-                method: 'GET',
-                headers: headers,
-                mode: 'cors',
-                cache: 'default'
-            };
-
-            fetch(this.props.url, myInit).then(function (res) {
-                return res;
-            }).then((resp) => {
-                return resp.json();
-            }).then(data => {
-                this.setState({
-                    data: data
-                })
-            })
+            getData(this.props.url, this)
         }
     };
 

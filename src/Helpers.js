@@ -146,3 +146,23 @@ export function getMarkersFromGroup(group,markersURL,id, state){
     });
 
 }
+
+export function getData(url,state) {
+    let headers = new Headers();
+    let myInit = {
+        method: 'GET',
+        headers: headers,
+        mode: 'cors',
+        cache: 'default'
+    };
+
+    fetch(url, myInit).then(function (res) {
+        return res;
+    }).then((resp) => {
+        return resp.json();
+    }).then(data => {
+        state.setState({
+            data: data
+        })
+    })
+}

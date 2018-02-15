@@ -8,6 +8,7 @@ import mark from './electrician.svg';
 import pin from './female.svg';
 import './Map.css';
 import logo from  '../Card/logo.svg';
+import {getData} from '../Helpers'
 
 let greenIcon = L.icon({
     iconUrl: mark,
@@ -47,24 +48,7 @@ export default class Transport_Map extends React.Component{
 
     componentWillMount(){
         if(this.props.url){
-            let headers = new Headers();
-            let myInit = {
-                method: 'GET',
-                headers: headers,
-                mode: 'cors',
-                cache: 'default'
-            };
-
-            fetch(this.props.url, myInit).then(function (res) {
-                return res;
-            }).then((resp) => {
-                return resp.json();
-            }).then(data => {
-                this.setState({
-                    markers: data,
-                    loading: false
-                })
-            })
+            getData(this.props.url, this)
         }
         else{
             this.setState({
@@ -92,7 +76,7 @@ export default class Transport_Map extends React.Component{
                     center={this.props.center}
                     zoom={12}>
                     <TileLayer
-                        url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     <Markers marker={this.props.marker} type={this.props.marker_type} color={this.props.color} match={this.props.match} markers={this.state.markers} headers={this.props.headers}/>
                 </Map>
