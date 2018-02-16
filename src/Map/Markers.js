@@ -27,10 +27,10 @@ export default class extends React.Component{
                     <div>
                         {this.props.markers.map( (marker, i) => {
                             if(isNaN(Number(marker.location_latitude))){
-                                return
+                                return '';
                             }
                             let open = this.props.marker[this.props.match] === marker[this.props.match];
-                            let color = this.state.opts[marker[this.state.name]].color;
+                            let color = this.props.fromGroup ? 'green' : this.state.opts[marker[this.state.name]].color
                             if(this.props.type === 'circle'){
                                 return <Circle color={color} format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} center={{lat:Number(marker.location_latitude), lng: Number(marker.location_longitude)}}/>
                             }

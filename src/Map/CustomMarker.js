@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server'
-import {Marker, Popup} from 'react-leaflet'
+import {Marker} from 'react-leaflet'
 import PopupFrame from './PopupFrame'
 
 export default class CustomMarker extends Marker{

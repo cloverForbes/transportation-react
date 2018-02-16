@@ -1,4 +1,3 @@
-let fiscal_year = 2018;
 export const data = [
 
     {

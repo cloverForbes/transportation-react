@@ -55,7 +55,6 @@ export default  class Table extends React.Component{
                 ): null
             }
         });
-
         return (
             <ReactTable style={{height: '400px'}} showPagination={false} minRows={0} defaultPageSize={1000}
                 columns={columns}
@@ -64,8 +63,6 @@ export default  class Table extends React.Component{
                     return {
                         onClick: (e, handleOriginal) => {
                             if(rowInfo) {
-                                let latitude = rowInfo.original.location_latitude;
-                                let longitude = rowInfo.original.location_longitude;
                                 this.props.getPosition(rowInfo.original);
                                 if (handleOriginal) {
                                     handleOriginal()

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React from 'react';
+
 
 export function rename(name) {
      let names = (name.split("_"));
@@ -69,6 +69,8 @@ export function format(type, data) {
     switch(type) {
         case 'date' :
             return formatDate(data);
+        default :
+            return data;
     }
 }
 
@@ -131,18 +133,33 @@ export function getMarkersFromGroup(group,markersURL,id, state){
                 cache: 'default'
             };
 
-            fetch(url, myInit).then(function (res) {
-                return res;
-            }).then((resp) => {
-                return resp.json();
-            }).then(data => {
-                dataArr.push(data);
-                if(dataArr.length === len){
-                    state.setState({
-                        markers : _.flattenDeep(dataArr),
-                    })
-                }
-            });
+            if(len === 1){
+                fetch(url, myInit).then(function (res) {
+                    return res;
+                }).then((resp) => {
+                    return resp.json();
+                }).then(data => {
+                    dataArr.push(data);
+                    if(dataArr.length === len){
+                        state.setState({
+                            bounds: findMedianLatLng(data)
+                        });
+                    }
+                });
+            } else {
+                fetch(url, myInit).then(function (res) {
+                    return res;
+                }).then((resp) => {
+                    return resp.json();
+                }).then(data => {
+                    dataArr.push(data);
+                    if(dataArr.length === len){
+                        state.setState({
+                            markers : _.flattenDeep(dataArr),
+                        })
+                    }
+                });
+            }
     });
 
 }
@@ -165,4 +182,32 @@ export function getData(url,state) {
             data: data
         })
     })
+}
+
+function findAverageLatLng(locationArray){
+    let output = {
+        lat: 0,
+        lng: 0
+    }
+
+    locationArray.forEach(i => {
+        output.lat += Number(i.location_latitude);
+        output.lng += Number(i.location_longitude);
+    });
+
+    output.lat /= locationArray.length;
+    output.lng /= locationArray.length;
+    return output
+}
+
+function findMedianLatLng(locationArray){
+    let newArray = [];
+    locationArray.forEach(i => {
+        newArray.push([
+            Number(i.location_latitude),
+            Number(i.location_longitude)
+        ])
+    });
+    return newArray;
+
 }

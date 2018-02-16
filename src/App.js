@@ -8,7 +8,8 @@ import {
 } from 'react-router-dom'
 import SignalFlashing from './Config/SignalFlashing';
 import SignalRequest from './Config/SignalRequest';
-import SignalProjects from './Config/SignalProjects'
+import SignalProjects from './Config/SignalProjects';
+import SignalTiming from './Config/SignalTiming'
 import Cards from './Card/Operations'
 import Card from './Card/Card'
 let card = {
@@ -31,30 +32,9 @@ export default class App extends React.Component{
         return (
             <Router>
                 <div>
-                    <h2>DashBoard</h2>
-                    <ul>
-                        <li>
-                            <Link to='/signal-flashing'>
-                                <code>Signal Flashing</code>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to='/signal-requests'>
-                                <code>Signal Requests</code>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to='/signal-projects'>
-                                <code>Signal Projects</code>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to='/operation-overview'>
-                                <code>Operation Overview</code>
-                            </Link>
-                        </li>
-                    </ul>
                     <Switch>
+                        <Route exact path='/' component={home}/>
+                        <Route exact path='/signal-timing' component={signalTiming}/>
                         <Route path='/signal-flashing' component={signalFlash}/>
                         <Route path='/signal-requests' component={signalRequest}/>
                         <Route path='/signal-projects' component={signalProjects}/>
@@ -65,6 +45,39 @@ export default class App extends React.Component{
         );
     }
 }
+
+const home = () => (
+    <div>
+        <h2>DashBoard</h2>
+        <ul>
+            <li>
+                <Link to='/signal-flashing'>
+                    <code>Signal Flashing</code>
+                </Link>
+            </li>
+            <li>
+                <Link to='/signal-requests'>
+                    <code>Signal Requests</code>
+                </Link>
+            </li>
+            <li>
+                <Link to='/signal-projects'>
+                    <code>Signal Projects</code>
+                </Link>
+            </li>
+            <li>
+                <Link to='/signal-timing'>
+                    <code>Signal Timing</code>
+                </Link>
+            </li>
+            <li>
+                <Link to='/operation-overview'>
+                    <code>Operation Overview</code>
+                </Link>
+            </li>
+        </ul>
+    </div>
+);
 
 const signalFlash = () => (
     <div>
@@ -79,6 +92,10 @@ const signalRequest = () => (
 
 const signalProjects = () => (
     <MapsApp config={SignalProjects}/>
+);
+
+const signalTiming = () => (
+  <MapsApp config={SignalTiming}/>
 );
 
 const cards = () => (
