@@ -55,7 +55,7 @@ export default class Transport_Map extends React.Component{
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <Markers fromGroup={this.props.fromGroup} marker={this.props.marker} type={this.props.marker_type} color={this.props.color} match={this.props.match} markers={this.state.markers} headers={this.props.headers}/>
+                    <Markers id={this.props.id} fromGroup={this.props.fromGroup} marker={this.props.marker} type={this.props.marker_type} color={this.props.color} match={this.props.match} markers={this.state.markers} headers={this.props.headers}/>
                 </Map>
             </div>
         )

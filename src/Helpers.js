@@ -142,7 +142,8 @@ export function getMarkersFromGroup(group,markersURL,id, state){
                     dataArr.push(data);
                     if(dataArr.length === len){
                         state.setState({
-                            bounds: findMedianLatLng(data)
+                            bounds: findMedianLatLng(data),
+                            id: group[0][id]
                         });
                     }
                 });

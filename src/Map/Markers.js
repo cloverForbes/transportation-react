@@ -30,7 +30,10 @@ export default class extends React.Component{
                                 return '';
                             }
                             let open = this.props.marker[this.props.match] === marker[this.props.match];
-                            let color = this.props.fromGroup ? 'green' : this.state.opts[marker[this.state.name]].color
+                            {console.log(this.props.id)}
+                            let color = this.props.fromGroup ?
+                                marker[this.props.fromGroup.id] === this.props.id ? 'green' : 'blue'
+                                : this.state.opts[marker[this.state.name]].color
                             if(this.props.type === 'circle'){
                                 return <Circle color={color} format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} center={{lat:Number(marker.location_latitude), lng: Number(marker.location_longitude)}}/>
                             }
