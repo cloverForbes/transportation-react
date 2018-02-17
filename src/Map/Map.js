@@ -53,7 +53,7 @@ export default class Transport_Map extends React.Component{
                     center={this.props.center}
                     zoom={12}>
                     <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        url='https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
                     />
                     <Markers id={this.props.id} fromGroup={this.props.fromGroup} marker={this.props.marker} type={this.props.marker_type} color={this.props.color} match={this.props.match} markers={this.state.markers} headers={this.props.headers}/>
                 </Map>

@@ -29,9 +29,14 @@ export function filterData(data, filters) {
         let tmpArray = [];
         filters.forEach(filter => {
             tmpArray.push(_.filter(data, (o) => {
+                console.log(filter);
+                console.log(o);
                 if (typeof(filter) === "string") {
                     if(o.location_name){
                         return dataContains(o.location_name, filter) >= 0
+                    }
+                    if(o.system_name){
+                        return dataContains(o.system_name, filter) >= 0
                     }
                 }
                 if (typeof(filter) === "object") {

@@ -39,14 +39,14 @@ export default  class Table extends React.Component{
                 Cell: (header.opts || header.format) ? row => (
                    !header.format ?
                        <div>
-                       <span style={{backgroundColor: header.display_opts[row.value].color}}>
+                       <span className="status-badge" style={{backgroundColor: header.display_opts[row.value].color}}>
                            <i className={[`fa fa-${header.display_opts[row.value].class}`]}>{header.opts[row.value]}</i>
                        </span>
                        </div>
                        :
                        (header.format && header.opts) ?
                            <span style={{backgroundColor: header.display_opts[row.value]}}>
-                               <i className={[`fa fa-${header.display_opts[row.value].class}`]}>{format(header.format, header.opts[row.value])}</i>
+                               <div className={[`fa fa-${header.display_opts[row.value].class}`]}>{format(header.format, header.opts[row.value])}</div>
                            </span>
                            :
                            <span>
@@ -56,7 +56,7 @@ export default  class Table extends React.Component{
             }
         });
         return (
-            <ReactTable style={{height: '400px'}} showPagination={false} minRows={0} defaultPageSize={1000}
+            <ReactTable className={'-striped -highlight'} style={{height: '400px'}} showPagination={false} minRows={0} defaultPageSize={1000}
                 columns={columns}
                 data={this.props.data ? this.props.data : this.props.filter.length > 0 ? this.state.filteredData : this.state.data }
                 getTdProps={(state, rowInfo) => {

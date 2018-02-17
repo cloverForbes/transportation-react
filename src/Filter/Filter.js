@@ -68,7 +68,7 @@ export default class Filter extends React.Component{
                 <div className="toggle">
                     <label>{this.props.label}</label>
                     <br/>
-                    <i style={{backgroundColor: display.color}} className={`fa fa-${display.class}`} id={this.state.value} onClick={this.handleToggle}>
+                    <i style={{backgroundColor: display.color}} className={`fa fa-${display.class} status-badge`} id={this.state.value} onClick={this.handleToggle}>
                         {this.state.value}
                     </i>
                 </div>
