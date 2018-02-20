@@ -45,6 +45,7 @@ export default class Transport_Map extends React.Component{
     }
 
     render(){
+        console.log(this.state.markers);
         return !this.state.loading ? (
             <div style={{ textAlign: 'center'}}>
                 <Map

@@ -29,8 +29,6 @@ export function filterData(data, filters) {
         let tmpArray = [];
         filters.forEach(filter => {
             tmpArray.push(_.filter(data, (o) => {
-                console.log(filter);
-                console.log(o);
                 if (typeof(filter) === "string") {
                     if(o.location_name){
                         return dataContains(o.location_name, filter) >= 0
@@ -148,6 +146,7 @@ export function getMarkersFromGroup(group,markersURL,id, state){
                     if(dataArr.length === len){
                         state.setState({
                             bounds: findMedianLatLng(data),
+                            markers : _.flattenDeep(dataArr),
                             id: group[0][id]
                         });
                     }
@@ -188,22 +187,6 @@ export function getData(url,state) {
             data: data
         })
     })
-}
-
-function findAverageLatLng(locationArray){
-    let output = {
-        lat: 0,
-        lng: 0
-    }
-
-    locationArray.forEach(i => {
-        output.lat += Number(i.location_latitude);
-        output.lng += Number(i.location_longitude);
-    });
-
-    output.lat /= locationArray.length;
-    output.lng /= locationArray.length;
-    return output
 }
 
 function findMedianLatLng(locationArray){
