@@ -21,7 +21,10 @@ export default class extends React.Component{
     };
 
     render(){
-        console.log(this.props.markers);
+        let groupColor = 'green';
+        if(this.props.marker.length > 0 && this.props.fromGroup){
+            groupColor =  (this.state.opts[this.props.marker[0][this.state.name]].color);
+        }
         return (
             this.props.markers.length > 0 ?
                     <div>
@@ -31,7 +34,7 @@ export default class extends React.Component{
                             }
                             let open = this.props.marker[this.props.match] === marker[this.props.match];
                             let color = this.props.fromGroup ?
-                                marker[this.props.fromGroup.id] === this.props.id ? 'green' : 'blue'
+                                marker[this.props.fromGroup.id] === this.props.id ? groupColor : 'blue'
                                 : this.state.opts[marker[this.state.name]].color;
                             if(this.props.type === 'circle'){
                                 return <Circle color={color} format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} center={{lat:Number(marker.location_latitude), lng: Number(marker.location_longitude)}}/>

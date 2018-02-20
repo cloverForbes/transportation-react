@@ -145,6 +145,7 @@ export function getMarkersFromGroup(group,markersURL,id, state){
                     dataArr.push(data);
                     if(dataArr.length === len){
                         state.setState({
+                            group: group,
                             bounds: findMedianLatLng(data),
                             markers : _.flattenDeep(dataArr),
                             id: group[0][id]
