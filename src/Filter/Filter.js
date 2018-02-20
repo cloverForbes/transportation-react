@@ -61,7 +61,7 @@ export default class Filter extends React.Component{
     }
 
     render(){
-        let display = this.props.display ? this.props.display[this.state.number] ? this.props.display[this.state.number] : {class: '', color: 'yellow'} : '';
+        let display = this.props.display ? this.props.display[this.state.number] ? this.props.display[this.state.number] : {class: '', color: 'black'} : '';
         return (
             this.props.type === "toggle" ?
 
