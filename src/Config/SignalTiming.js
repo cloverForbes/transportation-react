@@ -1,7 +1,7 @@
 export default {
     url: 'https://data.austintexas.gov/resource/g8w2-8uap.json?$query=SELECT * WHERE retime_status="COMPLETED" OR retime_status="PLANNED" OR retime_status="READY FOR DATA COLLECTION"', /*?$query=SELECT * WHERE retime_status="COMPLETED"*/
     id_match: "system_id",
-    fiscal: 'scheduled_fy',
+    string_filter: 'system_name',
     marker_type: 'circle',
     color: 2,
     fromGroup: {
@@ -21,7 +21,8 @@ export default {
         {
             alt: 'Status',
             name: 'retime_status',
-            opts: {'COMPLETED': 'Completed', 'PLANNED': 'Planned', 'IN PROGRESS': 'In Progress', 'READY FOR DATA COLLECTION': 'In Progress'},
+            filter: 'toggle',
+            opts: {'COMPLETED': 'Completed', 'PLANNED': 'Planned', 'READY FOR DATA COLLECTION': 'In Progress'},
             display_opts: {'COMPLETED': {color: 'green', class: ''}, 'PLANNED': {color: 'purple', class: ''}, 'READY FOR DATA COLLECTION': {color: 'red', class: ''}}
         },
         {

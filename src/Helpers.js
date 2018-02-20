@@ -14,28 +14,25 @@ function capitalize(word) {
 }
 
 export function dataContains(data, filter){
-    data = data.toLowerCase();
-    filter = filter.toLowerCase();
-    if(data.indexOf(filter) >= 0){
+    if(data){
+        data = data.toLowerCase();
+        filter = filter.toLowerCase();
+        if(data.indexOf(filter) >= 0){
 
+        }
+        return (data.indexOf(filter));
     }
-    return (data.indexOf(filter));
 }
 
 /*Takes an array of data and an array of filters and applies each filter the the data array*/
-export function filterData(data, filters) {
+export function filterData(data, filters, name) {
     let filteredData = [];
     if (filters.length !== 0) {
         let tmpArray = [];
         filters.forEach(filter => {
             tmpArray.push(_.filter(data, (o) => {
                 if (typeof(filter) === "string") {
-                    if(o.location_name){
-                        return dataContains(o.location_name, filter) >= 0
-                    }
-                    if(o.system_name){
-                        return dataContains(o.system_name, filter) >= 0
-                    }
+                    return dataContains(o[name], filter) >= 0
                 }
                 if (typeof(filter) === "object") {
                     return o[filter.name] === filter.value

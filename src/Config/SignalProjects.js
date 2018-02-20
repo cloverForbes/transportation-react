@@ -1,6 +1,7 @@
 export default  {
     url: "https://data.austintexas.gov/resource/xwqn-2f78.json",
     id_match: "signal_id",
+    string_filter: 'location_name',
     color: '2',
     marker_type: 'circle',
     headers: [

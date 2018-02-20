@@ -1,5 +1,6 @@
 export default {
   url: "https://data.austintexas.gov/resource/5zpr-dehc.json",
+  string_filter: 'location_name' ,
   id_match: 'signal_id',
   color: '1',
   marker_type: 'marker',
