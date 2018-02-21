@@ -2,6 +2,7 @@ import React from 'react';
 import {format} from '../Helpers'
 
 export default class PopupFrame extends React.Component{
+
     render(){
         let signal = this.props.info;
         return(
@@ -18,6 +19,7 @@ export default class PopupFrame extends React.Component{
                         </div>
                     );
                 })}
+                {this.props.children}
             </div>
         )
     }

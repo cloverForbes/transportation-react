@@ -13,9 +13,9 @@ export default {
     },
     {
       name: "operation_state",
-      opts: {'2': 'Flash', '3': 'Comms Outage', '4': 'Unknown'},
+      opts: {'1': 'Scheduled Flash','2': 'Flash', '3': 'Comms Outage', '4': 'Unknown'},
       display: 'icon',
-      display_opts: {'2': {class: 'exclamation-triangle', color: 'red'}, '3': {class: 'phone', color: '#F1AC37'}, '4' : {class: '', color: 'blue'}},
+      display_opts: {'1': {class: 'clock', color: '#1B495C'}, '2': {class: 'exclamation-triangle', color: 'red'}, '3': {class: 'phone', color: '#F1AC37'}, '4' : {class: '', color: 'blue'}},
       filter: "toggle",
       alt: "Status"
     },
