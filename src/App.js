@@ -1,5 +1,5 @@
 import React from 'react';
-import MapsApp from './Map/MapsApp'
+import Controller from './Controller/Controller'
 import {
     BrowserRouter as Router,
     Route,
@@ -26,7 +26,7 @@ let card = {
     'resource_id' : '5zpr-dehc',
     'data_transform' : function(x) { return( [x[0]['count']] )},
     'update_event' : 'signal_status_update'
-}
+};
 export default class App extends React.Component{
     render(){
         return (
@@ -82,20 +82,20 @@ const home = () => (
 const signalFlash = () => (
     <div>
         <Card config={card}/>
-        <MapsApp config={SignalFlashing}/>
+        <Controller config={SignalFlashing}/>
     </div>
 );
 
 const signalRequest = () => (
-    <MapsApp config={SignalRequest}/>
+    <Controller config={SignalRequest}/>
 );
 
 const signalProjects = () => (
-    <MapsApp config={SignalProjects}/>
+    <Controller config={SignalProjects}/>
 );
 
 const signalTiming = () => (
-  <MapsApp config={SignalTiming}/>
+  <Controller config={SignalTiming}/>
 );
 
 const cards = () => (

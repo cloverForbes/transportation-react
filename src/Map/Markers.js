@@ -1,6 +1,7 @@
 import React from 'react';
 import Circle from './CustomCircleMarker';
 import Marker from './CustomMarker';
+import L from 'leaflet'
 
 export default class extends React.Component{
     constructor(props){
@@ -40,7 +41,11 @@ export default class extends React.Component{
                             if(this.props.type === 'circle'){
                                 return <Circle color={color} format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} center={{lat:Number(marker.location_latitude), lng: Number(marker.location_longitude)}}/>
                             }
+                            else if(this.props.type === 'marker'){
+                                return <Marker format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} position={{lat:Number(marker.location_latitude), lng: Number(marker.location_longitude)}}/>
+                            }
                             else {
+
                                 return <Marker format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} position={{lat:Number(marker.location_latitude), lng: Number(marker.location_longitude)}}/>
                             }
                         })

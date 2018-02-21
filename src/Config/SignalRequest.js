@@ -3,6 +3,7 @@ export default {
     id_match: "atd_eval_id",
     string_filter: 'location_name',
     uniqBy: 'location_name',
+    center: [30.3, -97.7],
     marker_type: 'circle',
     color: '1',
     headers: [

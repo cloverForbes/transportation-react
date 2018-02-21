@@ -4,6 +4,7 @@ export default {
     string_filter: 'system_name',
     marker_type: 'circle',
     color: 2,
+    center: [30.3, -97.7],
     fromGroup: {
         url: 'https://data.austintexas.gov/resource/efct-8fs9',
         id: 'system_id',

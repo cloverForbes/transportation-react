@@ -3,6 +3,7 @@ export default  {
     id_match: "signal_id",
     string_filter: 'location_name',
     color: '2',
+    center: [30.3, -97.7],
     marker_type: 'circle',
     headers: [
         {
