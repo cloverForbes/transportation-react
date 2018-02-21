@@ -76,7 +76,14 @@ export function format(type, data) {
 
 function formatDate(date) {
     let dateObj = new Date(date * 1000);
-    return `${dateObj.getDate()} ${convertMonth(dateObj.getMonth())} ${dateObj.getHours()}:${dateObj.getMinutes()}`
+    return `${dateObj.getDate()} ${convertMonth(dateObj.getMonth())} ${padTime(dateObj.getHours())}:${padTime(dateObj.getMinutes())}`
+}
+
+function padTime(time){
+    if(time <= 9){
+        time = '0' + time
+    }
+    return time;
 }
 
 function convertMonth(month) {
