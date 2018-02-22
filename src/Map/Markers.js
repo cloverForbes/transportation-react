@@ -1,7 +1,6 @@
 import React from 'react';
 import Circle from './CustomCircleMarker';
 import Marker from './CustomMarker';
-import L from 'leaflet'
 
 export default class extends React.Component{
     constructor(props){
@@ -22,7 +21,6 @@ export default class extends React.Component{
     };
 
     render(){
-        console.log(this.props.markers)
         let groupColor = 'green';
         if(this.props.marker.length > 0 && this.props.fromGroup){
             groupColor =  (this.state.opts[this.props.marker[0][this.state.name]].color);
