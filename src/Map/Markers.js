@@ -2,6 +2,19 @@ import React from 'react';
 import Circle from './CustomCircleMarker';
 import Marker from './CustomMarker';
 
+/*Creates a list of markers components from a list of marker information*/
+
+/*
+* Props-
+* color: determines color options for different markers
+* fromGroup: determines if the markers are coming from a large group of markers, includes secondary url and id used to pull markers per group
+* headers: used to pass on to Markers as format
+* id: id is used to select which marker to automatically open up without User Click
+* marker: an individual marker
+* match: used to determine what marker will be opened
+* type: Circle or Default
+*/
+
 export default class extends React.Component{
     constructor(props){
         super(props);
@@ -14,7 +27,7 @@ export default class extends React.Component{
         }
     }
 
-    simulateClick = (e) => {
+    simulateClick = e => {
         if(e){
             e.leafletElement.openPopup();
         }
@@ -43,15 +56,11 @@ export default class extends React.Component{
                                 return <Marker format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} position={{lat:Number(marker.location_latitude), lng: Number(marker.location_longitude)}}/>
                             }
                             else {
-
                                 return <Marker format={this.props.headers} info={marker} ref={open ? this.simulateClick : null} open={open}  key={i} position={{lat:Number(marker.location_latitude), lng: Number(marker.location_longitude)}}/>
                             }
                         })
                         }
-                    </div>
-                :
-
-                ''
+                    </div> :  ''
         );
     }
 }
