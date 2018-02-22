@@ -1,9 +1,17 @@
 import React from 'react';
 import {format} from '../Helpers'
+/*Custom PopUp for Marker*/
+
+/*
+* Props:
+* format: The format of the
+* info: What information should be displayed in the popup
+*/
 
 export default class PopupFrame extends React.Component{
 
     render(){
+        console.log(this.props);
         let signal = this.props.info;
         return(
             <div>
