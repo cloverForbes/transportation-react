@@ -4,8 +4,15 @@ import Markers from './Markers'
 import {getData, getMarkersFromGroup} from '../Helpers'
 import logo from  '../Card/logo.svg';
 import './Map.css';
+/*Map Component, uses leaflet for base component, but adds functionality
+* Can be used separately from Filter and Table.
+*/
 
 
+/*
+*Props:
+* bounds: Used for fromGroup markers to allow a selection of markers
+*/
 export default class Transport_Map extends React.Component{
     constructor(props){
         super(props);
@@ -45,7 +52,7 @@ export default class Transport_Map extends React.Component{
 
     }
 
-    render(){ 
+    render(){
         return !this.state.loading ? (
             <div style={{ textAlign: 'center'}}>
                 <Map

@@ -48,7 +48,7 @@ export function filterData(data, filters, name) {
             filteredData = tmpArray[0]
         }
         else {
-            for (let x = 0; x < tmpArray.length - 1; x++) {
+            for (let x = 0; x < tmpArray.length; x++) {
                 filteredData = (_.intersection(tmpArray[x], tmpArray[x + 1]));
             }
         }
