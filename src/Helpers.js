@@ -24,46 +24,6 @@ export function dataContains(data, filter){
     }
 }
 
-/*Takes an array of data and an array of filters and applies each filter the the data array*/
-export function filterData(data, filters, name) {
-    let filteredData = [];
-    if (filters.length !== 0) {
-        let tmpArray = [];
-        filters.forEach(filter => {
-            tmpArray.push(_.filter(data, (o) => {
-                if (typeof(filter) === "string") {
-                    return dataContains(o[name], filter) >= 0
-                }
-                if (typeof(filter) === "object") {
-                    return o[filter.name] === filter.value
-                }
-            }))
-        });
-
-        if (tmpArray.length === 2) {
-            filteredData = (_.intersection(...tmpArray));
-        }
-        else if (tmpArray.length === 1) {
-
-            filteredData = tmpArray[0]
-        }
-        else {
-            for (let x = 0; x < tmpArray.length; x++) {
-                filteredData = (_.intersection(tmpArray[x], tmpArray[x + 1]));
-            }
-        }
-
-        /*if (tmpArray.length > 1) {
-            filteredData = _.filter(filteredData, (o) => {
-                console.log(o);
-                return dataContains(o.location_name, this.props.filter[0]) !== -1
-            });
-        }*/
-        return filteredData;
-    }
-    return data
-}
-
 
 export function format(type, data) {
     switch(type) {
@@ -204,4 +164,20 @@ function findMedianLatLng(locationArray){
     });
     return newArray;
 
+}
+
+/*Takes an array of data and an array of filters and applies each filter the the data array*/
+export function filterData(data, filters, name) {
+    let tmpData = data;
+    filters.forEach(filter => {
+        tmpData = _.filter(tmpData, (o) => {
+            if (typeof(filter) === "string") {
+                return dataContains(o[name], filter) >= 0
+            }
+            if (typeof(filter) === "object") {
+                return o[filter.name] === filter.value
+            }
+        })
+    });
+    return tmpData;
 }
