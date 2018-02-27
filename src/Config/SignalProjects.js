@@ -18,10 +18,10 @@ export default  {
         {
             alt: 'Status',
             name: 'signal_status',
-            opts: {'CONSTRUCTION': 'Construction', 'DESIGN': 'Design', 'TURNED_ON': 'Turned On', 'REMOVED_PERMANENTLY': 'Removed', "RECOMMENDED - NO FUNDING": 'rec', 'REMOVED_TEMPORARILY': 'rem', 'VOID': 'void', 'UKNOWN': 'UK'},
+            opts: {'CONSTRUCTION': 'Construction', 'DESIGN': 'Design', 'TURNED_ON': 'Turned On'},
             display: 'icon',
             filter: 'toggle',
-            display_opts: {'CONSTRUCTION': {class: 'wrench', color: '#ED9F1C'}, 'DESIGN': {class: 'pencil', color: '#1B7756'}, 'TURNED_ON': {class: 'car', color: '#028102'}, 'REMOVED_PERMANENTLY': {class:'', color: 'red'}, 'RECOMMENDED - NO FUNDING': {class: '', color: 'orange'}, 'REMOVED_TEMPORARILY': {class: '', color: ''}, 'VOID': {class: '', color: ''}, 'UKNOWN': {class: '', color: ''}},
+            display_opts: {'CONSTRUCTION': {class: 'wrench', color: '#ED9F1C'}, 'DESIGN': {class: 'pencil', color: '#1B7756'}, 'TURNED_ON': {class: 'car', color: '#028102'}},
         },
         {
             alt: 'Updated',
