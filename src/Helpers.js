@@ -29,8 +29,8 @@ export function format(type, data) {
     switch(type) {
         case 'date' :
             return formatDate(data);
-        case 'time':
-            return formatTime(data);
+        case 'date_from_stamp':
+            return formatDateFromStamp(data);
         default :
             return data;
     }
@@ -48,8 +48,8 @@ function padTime(time){
     return time;
 }
 
-function formatTime(time){
-    let date = new Date(time);
+function formatDateFromStamp(stamp){
+    let date = new Date(stamp);
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
 }
 

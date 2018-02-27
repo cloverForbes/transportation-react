@@ -26,7 +26,7 @@ export default  {
         {
             alt: 'Updated',
             name: 'modified_date',
-            format: 'time',
+            format: 'date_from_stamp',
         }
     ]
 }

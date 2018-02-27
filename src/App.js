@@ -12,6 +12,7 @@ import SignalProjects from './Config/SignalProjects';
 import SignalTiming from './Config/SignalTiming'
 import Cards from './Card/Operations'
 import Card from './Card/Card'
+import Quote from './QuoteOfTheDay/Quote';
 let card = {
     'id' : 'signals-on-flash',
     'row_container_id' : 'panel-row-3',
@@ -49,6 +50,7 @@ export default class App extends React.Component{
 const home = () => (
     <div>
         <h2>DashBoard</h2>
+        <Quote/>
         <ul>
             <li>
                 <Link to='/signal-flashing'>
