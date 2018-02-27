@@ -4,7 +4,8 @@ import {
     BrowserRouter as Router,
     Route,
     Link,
-    Switch
+    Switch,
+    Redirect
 } from 'react-router-dom'
 import SignalFlashing from './Config/SignalFlashing';
 import SignalRequest from './Config/SignalRequest';
@@ -12,7 +13,7 @@ import SignalProjects from './Config/SignalProjects';
 import SignalTiming from './Config/SignalTiming'
 import Cards from './Card/Operations'
 import Card from './Card/Card'
-import Quote from './QuoteOfTheDay/Quote';
+import Header from './Header/Header';
 let card = {
     'id' : 'signals-on-flash',
     'row_container_id' : 'panel-row-3',
@@ -28,18 +29,21 @@ let card = {
     'data_transform' : function(x) { return( [x[0]['count']] )},
     'update_event' : 'signal_status_update'
 };
+const pages = [{name: 'Signal Flashing', link: '/signal-flashing'}, {name: 'Signal Timing', link: '/signal-timing'}];
 export default class App extends React.Component{
     render(){
         return (
             <Router>
                 <div>
+                    <Route path="/:title*" render={(props) => <Header title={props.match.params.title} pages={pages}/>}/>
                     <Switch>
                         <Route exact path='/' component={home}/>
                         <Route exact path='/signal-timing' component={signalTiming}/>
-                        <Route path='/signal-flashing' component={signalFlash}/>
-                        <Route path='/signal-requests' component={signalRequest}/>
-                        <Route path='/signal-projects' component={signalProjects}/>
-                        <Route path='/operation-overview' component={cards} />
+                        <Route exact path='/signal-flashing' component={signalFlash}/>
+                        <Route exact path='/signal-requests' component={signalRequest}/>
+                        <Route excat path='/signal-projects' component={signalProjects}/>
+                        <Route exact path='/operation-overview' component={cards} />
+                        {/*<Redirect to='/'/>*/}
                     </Switch>
                 </div>
             </Router>
@@ -83,7 +87,7 @@ const home = () => (
 const signalFlash = () => (
     <div>
         <Card config={card}/>
-        <Controller config={SignalFlashing}/>
+        <Controller  config={SignalFlashing}/>
     </div>
 );
 

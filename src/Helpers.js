@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 
 export function rename(name) {
-     let names = (name.split("_"));
+     let names = (name.split("-"));
      names.forEach( (name,index) => {
          names[index] = capitalize(name);
      });
