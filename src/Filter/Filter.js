@@ -1,5 +1,7 @@
 import React from  'react';
 import {createArray, indexOfValue} from '../Helpers'
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 
 /*Filter Component to be used in conjunction with Table or Map, unlike other components this one can not
@@ -20,9 +22,19 @@ export default class Filter extends React.Component{
         this.state = {
             value: this.props.type === 'search' ? '' : "All",
             opts: this.props.opts ? createArray(this.props.opts) : '',
-            number: 0
+            number: 0,
         }
 
+    }
+
+    componentWillMount(){
+        if(typeof this.state.opts === 'object'){
+            let tmpArray = this.state.opts;
+            tmpArray.unshift({value: 'All', key: null});
+            this.setState({
+                opts: tmpArray
+            })
+        }
     }
 
     /*Keeps track of current state for search filter and sends Data to controller*/
@@ -35,36 +47,33 @@ export default class Filter extends React.Component{
 
     /*Handles State Change for Toggle Filter and Sends Data to controller*/
     handleToggle = e => {
-        let val = e.target.id;
-        let newArr = createArray(this.props.opts);
-        newArr.unshift({key: null, value: "All"});
-        let position = (indexOfValue(newArr, val) + 1) % newArr.length;
-        let name = this.props.name;
-        let value = newArr[position].value;
-        this.setState({
-            value: value,
-            number: newArr[position].key
-        })
-        if(newArr[position].key === null) {
-            this.props.pullData({}, this.props.myKey);
-        }
-        else{
-            this.props.pullData({name, value: newArr[position].key}, this.props.myKey);
-        }
+        this.setState({ value: e.value });
 
+        let name = this.props.name;
+        console.log(e.value)
+        e.value === null ?
+            this.props.pullData({}, this.props.myKey)
+            :
+            this.props.pullData({name, value: e.value}, this.props.myKey)
     };
 
     render(){
-        let display = this.props.display ? this.props.display[this.state.number] ? this.props.display[this.state.number] : {class: '', color: 'black'} : '';
+        const selectedOption  = this.state;
+        const value = selectedOption && selectedOption.value;
         return (
             this.props.type === "toggle" ?
 
                 <div className="toggle">
                     <label>{this.props.label}</label>
                     <br/>
-                    <i style={{backgroundColor: display.color}} className={`fa fa-${display.class} status-badge`} id={this.state.value} onClick={this.handleToggle}>
-                        {this.state.value}
-                    </i>
+                        <Select
+                            name="form-field-name"
+                            value={value}
+                            onChange={this.handleToggle}
+                            options={this.state.opts.map(opt => {
+                                return {value: opt.key, label: opt.value}
+                            })}
+                        />
                 </div>
 
                 :
