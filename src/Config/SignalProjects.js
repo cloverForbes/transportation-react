@@ -1,5 +1,5 @@
 export default  {
-    url: "https://data.austintexas.gov/resource/xwqn-2f78.json",
+    url: "https://data.austintexas.gov/resource/xwqn-2f78.json?$query=SELECT * WHERE signal_status='CONSTRUCTION' OR signal_status='TURNED_ON' OR signal_status='DESIGN'",
     id_match: "signal_id",
     string_filter: 'location_name',
     color: '2',
