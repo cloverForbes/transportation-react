@@ -29,6 +29,8 @@ export function format(type, data) {
     switch(type) {
         case 'date' :
             return formatDate(data);
+        case 'time':
+            return formatTime(data);
         default :
             return data;
     }
@@ -44,6 +46,11 @@ function padTime(time){
         time = '0' + time
     }
     return time;
+}
+
+function formatTime(time){
+    let date = new Date(time);
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
 }
 
 function convertMonth(month) {

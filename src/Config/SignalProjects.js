@@ -26,6 +26,7 @@ export default  {
         {
             alt: 'Updated',
             name: 'modified_date',
+            format: 'time',
         }
     ]
 }
