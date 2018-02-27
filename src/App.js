@@ -50,7 +50,6 @@ export default class App extends React.Component{
 const home = () => (
     <div>
         <h2>DashBoard</h2>
-        <Quote/>
         <ul>
             <li>
                 <Link to='/signal-flashing'>

@@ -2,6 +2,7 @@ import React from  'react';
 import {createArray, indexOfValue} from '../Helpers'
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import './filter.css';
 
 
 /*Filter Component to be used in conjunction with Table or Map, unlike other components this one can not
@@ -50,7 +51,6 @@ export default class Filter extends React.Component{
         this.setState({ value: e.value });
 
         let name = this.props.name;
-        console.log(e.value)
         e.value === null ?
             this.props.pullData({}, this.props.myKey)
             :
@@ -71,7 +71,7 @@ export default class Filter extends React.Component{
                             value={value}
                             onChange={this.handleToggle}
                             options={this.state.opts.map(opt => {
-                                return {value: opt.key, label: opt.value}
+                                return {value: opt.key, label: opt.value, clearableValue: false }
                             })}
                         />
                 </div>

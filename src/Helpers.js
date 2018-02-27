@@ -90,7 +90,7 @@ export function indexOfValue(arr,value){
         if(item.value === value){
             index = j;
         }
-    })
+    });
     return index
 }
 
