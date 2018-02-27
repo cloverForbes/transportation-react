@@ -43,7 +43,7 @@ export default class App extends React.Component{
                         <Route exact path='/signal-requests' component={signalRequest}/>
                         <Route excat path='/signal-projects' component={signalProjects}/>
                         <Route exact path='/operation-overview' component={cards} />
-                        {/*<Redirect to='/'/>*/}
+                        <Redirect to='/'/>
                     </Switch>
                 </div>
             </Router>
