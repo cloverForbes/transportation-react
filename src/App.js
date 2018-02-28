@@ -29,7 +29,13 @@ let card = {
     'data_transform' : function(x) { return( [x[0]['count']] )},
     'update_event' : 'signal_status_update'
 };
-const pages = [{name: 'Signal Flashing', link: '/signal-flashing'}, {name: 'Signal Timing', link: '/signal-timing'}];
+const pages = [
+    {name: 'Signal Flashing', link: '/signal-flashing'},
+    {name: 'Signal Timing', link: '/signal-timing'},
+    {name: 'Signal Requests', link: '/signal-requests'},
+    {name: 'Signal Projects', link: '/signal-projects'},
+    {name: 'Operation Overview', link: 'operation-overview'},
+    ];
 export default class App extends React.Component{
     render(){
         return (
