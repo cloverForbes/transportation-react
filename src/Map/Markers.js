@@ -18,7 +18,6 @@ import Marker from './CustomMarker';
 export default class extends React.Component{
     constructor(props){
         super(props);
-
         if(this.props.color){
             this.state = {
                 name: this.props.color.name,
@@ -32,6 +31,8 @@ export default class extends React.Component{
             e.leafletElement.openPopup();
         }
     };
+
+
 
     render(){
         let groupColor = 'green';

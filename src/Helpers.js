@@ -156,7 +156,8 @@ export function getData(url,state) {
         return resp.json();
     }).then(data => {
         state.setState({
-            data: data
+            loading: false,
+            data: data,
         })
     })
 }

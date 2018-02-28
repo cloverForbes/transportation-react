@@ -63,7 +63,7 @@ export default class Transport_Map extends React.Component{
                     <TileLayer
                         url='https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
                     />
-                    <Markers id={this.props.id} fromGroup={this.props.fromGroup} marker={this.props.marker} type={this.props.marker_type} color={this.props.color} match={this.props.match} markers={this.state.markers} headers={this.props.headers}/>
+                    <Markers id={this.props.id} fromGroup={this.props.fromGroup} marker={this.props.marker} type={this.props.marker_type} color={this.props.color} match={this.props.match} markers={this.props.markers} headers={this.props.headers}/>
                 </Map>
             </div>
         )
