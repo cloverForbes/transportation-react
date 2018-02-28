@@ -34,6 +34,9 @@ export default class Transport_Map extends React.Component{
             getData(this.props.url, this)
         }
         else{
+            if(this.props.fromGroup){
+                getMarkersFromGroup(this.props.markers, this.props.fromGroup.url, this.props.fromGroup.id, this)
+            }
             this.setState({
                 loading: false
             })
@@ -63,7 +66,7 @@ export default class Transport_Map extends React.Component{
                     <TileLayer
                         url='https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
                     />
-                    <Markers id={this.props.id} fromGroup={this.props.fromGroup} marker={this.props.marker} type={this.props.marker_type} color={this.props.color} match={this.props.match} markers={this.props.markers} headers={this.props.headers}/>
+                    <Markers id={this.props.id} fromGroup={this.props.fromGroup} marker={this.props.marker} type={this.props.marker_type} color={this.props.color} match={this.props.match} markers={this.props.fromGroup ? this.state.markers : this.props.markers} headers={this.props.headers}/>
                 </Map>
             </div>
         )

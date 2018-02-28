@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {rename} from '../Helpers';
 import {Grid,Row, Col} from 'react-bootstrap';
 import './Header.css';
+import Quote from '../QuoteOfTheDay/Quote';
 
 export default class Header extends React.Component{
 
@@ -10,7 +11,8 @@ export default class Header extends React.Component{
         this.setState({menuVisible: false})
     }
 
-    showMenu = () =>{
+    showMenu = ()=>{
+        console.log('hi');
         this.setState({
             menuVisible: !this.state.menuVisible
         });
@@ -20,21 +22,22 @@ export default class Header extends React.Component{
         return  (
             <Grid fluid={true}>
                 <Row>
-                    <Col sm={11}>
+                    <Col sm={6} md={11}>
                         <h2>{this.props.title ? rename(this.props.title) : 'Home'}</h2>
                         {this.props.title && <Link to="/"><p>Transportation Data and Performance Hub</p></Link>}
                     </Col>
-                    <Col sm={1} md={1} lg={1} mdPush={5}>
+                    <Col sm={6} md={1}>
                         {this.props.title && <i onClick={this.showMenu} className="box-shadow-menu"/>}
                     </Col>
                 </Row>
                 <Row style={{textAlign: 'center'}}>
                     <Col md={12}  mdOffset={6}>
-                        <ul style={{display: this.state.menuVisible ? '' : 'none'}}>
+                        <Quote />
+                        <ul className="header-menu" style={{display: this.state.menuVisible ? '' : 'none'}} >
                             {this.props.pages.map((page, index ) => {
                                 return (
-                                    <div onClick={this.showMenu} key={index}>
-                                        <Link to={page.link}>{page.name}</Link>
+                                    <div  key={index}>
+                                        <Link onClick={this.showMenu} to={page.link}>{page.name}</Link>
                                     </div>
                                 )
                             })}

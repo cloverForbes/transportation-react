@@ -1,7 +1,10 @@
 .box-shadow-menu {
     position: relative;
     padding-left: 1.25em;
+    margin-left: 75%;
 }
+
+
 .box-shadow-menu:before {
     content: "";
     position: absolute;
@@ -13,4 +16,16 @@
     box-shadow:
             0 0.25em 0 0 black,
             0 0.5em 0 0 black;
+}
+
+.header-menu{
+    background-color: #222222;
+}
+
+.header-menu a{
+    color: white !important;
+}
+
+.hidden {
+    display: none !important;
 }
