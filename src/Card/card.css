@@ -23,6 +23,11 @@
 }
 
 .spinner {
+    height: 80px;
+    margin: auto;
+}
+
+.spinner-center{
     position: absolute;
     left: 200%;
     bottom: -50%;
