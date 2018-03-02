@@ -12,7 +12,6 @@ export default class Header extends React.Component{
     }
 
     showMenu = ()=>{
-        console.log('hi');
         this.setState({
             menuVisible: !this.state.menuVisible
         });
@@ -20,8 +19,8 @@ export default class Header extends React.Component{
 
     render(){
         return  (
-            <div className="headerCom">
-                <Grid fluid={true}>
+            <Grid fluid={true}>
+                <div className="headerCom">
                     <Row>
                         <Col sm={6} md={11}>
                             <h2>{this.props.title ? rename(this.props.title) : 'Home'}</h2>
@@ -33,7 +32,6 @@ export default class Header extends React.Component{
                     </Row>
                     <Row style={{textAlign: 'center'}}>
                         <Col md={12}  mdOffset={6}>
-                            <Quote />
                             <ul className="header-menu" style={{display: this.state.menuVisible ? '' : 'none'}} >
                                 {this.props.pages.map((page, index ) => {
                                     return (
@@ -45,9 +43,13 @@ export default class Header extends React.Component{
                             </ul>
                         </Col>
                     </Row>
-                </Grid>
-
-            </div>
+                </div>
+                <Row>
+                    <Col md={4} mdOffset={4}>
+                        <Quote />
+                    </Col>
+                </Row>
+            </Grid>
         )
     }
 }

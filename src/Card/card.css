@@ -23,7 +23,9 @@
 }
 
 .spinner {
-    height: 80px;
+    position: absolute;
+    left: 200%;
+    bottom: -50%;
 }
 
 .no-border {
