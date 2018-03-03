@@ -1,7 +1,7 @@
 .box-shadow-menu {
     position: relative;
-    padding-left: 1.25em;
-    margin-left: 75%;
+    /*padding-left: 1.50em;
+    margin-left: 75%;*/
     color: white;
 }
 
@@ -41,6 +41,8 @@
 .headerCom{
     color: white;
     background-image: url("/img/header.png");
+    margin-left: -15px;
+    margin-right: -15px;
 }
 
 .header-menu-button{
@@ -52,4 +54,11 @@
 
 .header-menu-button:hover {
     cursor: pointer;
+}
+
+.row-border{
+    margin-top: 1px;
+    margin-bottom: 5px;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
 }

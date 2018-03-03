@@ -22,15 +22,15 @@ export default class Header extends React.Component{
             <Grid fluid={true}>
                 <div className="headerCom">
                     <Row>
-                        <Col sm={6} md={11}>
+                        <Col md={11}>
                             <h2>{this.props.title ? rename(this.props.title) : 'Home'}</h2>
                             {this.props.title && <Link to="/"><p>Transportation Data and Performance Hub</p></Link>}
                         </Col>
-                        <Col sm={6} md={1}>
+                        <Col md={1}>
                             {this.props.title && <i onClick={this.showMenu} className="fa fa-bars header-menu-button"/>}
                         </Col>
                     </Row>
-                    <Row style={{textAlign: 'center'}}>
+                    <Row  style={{textAlign: 'center'}}>
                         <Col md={12}  mdOffset={6}>
                             <ul className="header-menu" style={{display: this.state.menuVisible ? '' : 'none'}} >
                                 {this.props.pages.map((page, index ) => {
@@ -44,10 +44,8 @@ export default class Header extends React.Component{
                         </Col>
                     </Row>
                 </div>
-                <Row>
-                    <Col md={4} mdOffset={4}>
-                        <Quote />
-                    </Col>
+                <Row className="row-border">
+                    <Quote/>
                 </Row>
             </Grid>
         )

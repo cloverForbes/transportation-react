@@ -1,4 +1,5 @@
 import React from 'react';
+import './quote.css';
 
 export default class Quote extends React.Component{
     constructor(props){
@@ -16,15 +17,16 @@ export default class Quote extends React.Component{
             mode: 'cors',
             cache: 'default'
         };
-
-        fetch('https://quotes.rest/qod', myInit)
+        let url = "https://data.austintexas.gov/resource/dykj-9er2.json";
+        fetch(url, myInit)
             .then(response => {
                 return response.json();
             })
             .then(data => {
-                let quoteData = (data.contents.quotes[0]);
-                let quote = quoteData.quote;
-                let author = quoteData.author;
+                data = data[data.length-1];
+                let author = data.attribution;
+                let quote = data.quote;
+                console.log(data);
                 this.setState({
                     quote: quote,
                     author: author,
@@ -33,11 +35,8 @@ export default class Quote extends React.Component{
             })
     }
     render(){
-        console.log(this.state);
         return (
-            <div>
-                <p>{this.state.quote} - {this.state.author}</p>
-            </div>
+                <p className="quote">{this.state.quote} - {this.state.author}</p>
         )
     }
 }
