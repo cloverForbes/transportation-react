@@ -20,10 +20,10 @@ export default class Header extends React.Component{
     render(){
         return  (
             <Grid fluid={true}>
-                <div className="headerCom">
+                <div className={this.props.title  ? 'headerCom' : `headerCom headerHome`}>
                     <Row>
                         <Col md={11}>
-                            <h2>{this.props.title ? rename(this.props.title) : 'Home'}</h2>
+                            <h2>{this.props.title ? rename(this.props.title) : 'Austin Transportation Hub'}</h2>
                             {this.props.title && <Link to="/"><p>Transportation Data and Performance Hub</p></Link>}
                         </Col>
                         <Col md={1}>

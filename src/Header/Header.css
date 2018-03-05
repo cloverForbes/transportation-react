@@ -62,3 +62,20 @@
     border-top: 2px solid grey;
     border-bottom: 2px solid grey;
 }
+
+.headerHome {
+    height: 25vh;
+    text-align: center;
+}
+
+.headerHome h2 {
+    font-size: 7vh;
+    margin-top: 10vh;
+}
+
+@media screen and (max-width: 545px){
+    .headerHome h2 {
+        margin-top: 0;
+        font-size: 6vh;
+    }
+}
