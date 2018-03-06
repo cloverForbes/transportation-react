@@ -61,7 +61,7 @@ export default class Transport_Map extends React.Component {
 
   render() {
     return !this.state.loading ? (
-      <div style={{ textAlign: "center" }}>
+      <div className="flex-map" style={{ textAlign: "center" }}>
         <Map
           bounds={this.props.bounds}
           animate={this.state.animate}

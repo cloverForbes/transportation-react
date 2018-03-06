@@ -75,8 +75,8 @@ export default class Table extends React.Component {
     this.props.data.forEach(i => {});
     return (
       <ReactTable
-        className={"-striped -highlight"}
-        style={{ height: "400px" }}
+        className={"-striped -highlight flex-table"}
+        /*style={{ height: "400px" }}*/
         showPagination={false}
         minRows={0}
         defaultPageSize={1000}

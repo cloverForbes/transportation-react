@@ -89,11 +89,12 @@ export default class Controller extends React.Component{
                         })}
                   </div>
                   <div className="controller-container">
-                            <Table fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} data={data}  filter={this.state.filters} getPosition={this.getPosition} headers={this.props.config.headers}/>
-                            <Map id={this.state.id ? this.state.id : -1} bounds={this.state.bounds} fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} marker_type={this.props.config.marker_type} color={this.props.config.headers[this.props.config.color]} match={this.props.config.id_match} headers={this.props.config.headers} marker={this.props.config.fromGroup ? this.state.group: this.state.marker}  markers={data} center={this.state.position}/>
+                    <Table className="flex-table" fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} data={data}  filter={this.state.filters} getPosition={this.getPosition} headers={this.props.config.headers}/>
+                    <Map className="flex-map" id={this.state.id ? this.state.id : -1} bounds={this.state.bounds} fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} marker_type={this.props.config.marker_type} color={this.props.config.headers[this.props.config.color]} match={this.props.config.id_match} headers={this.props.config.headers} marker={this.props.config.fromGroup ? this.state.group: this.state.marker}  markers={data} center={this.state.position}/>
                   </div>
                 </div>
 
         );
     }
 }
+
