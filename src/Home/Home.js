@@ -5,7 +5,7 @@ export default function Home(props) {
     <div className="container-fluid">
       <div className="row">
         {props.links.map((link, index) => {
-          return <HomeButton key={index} link={link} />;
+          return <HomeButton key={index} link={link}/>;
         })}
       </div>
     </div>

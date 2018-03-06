@@ -1,0 +1,10 @@
+.filter-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.filter{
+  flex-grow: 1;
+}
+
+

@@ -1,5 +1,4 @@
 import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap'
 import './card.css';
 import logo from './logo.svg';
 
@@ -65,20 +64,16 @@ export default class Card extends React.Component {
         return (
             this.state.loaded ?
                 <div className="card">
-                    <Grid fluid={true}>
-                        <Row className="center">
-                            <Col> <i className={"fas fa-" + this.props.config.icon}> </i> </Col>
-                            <Col> <h3>{this.props.config.display_name}</h3> </Col>
-                        </Row>
-                        <Row>
-                            <Col><h1>{this.state.count}</h1></Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <a target="_blank" href={`https://data.austintexas.gov/dataset/${this.props.config.resource_id}`}><p>view data</p></a>
-                            </Col>
-                        </Row>
-                    </Grid>
+                        <div className="center">
+                            <i className={"fas fa-" + this.props.config.icon}> </i>
+                            <h3>{this.props.config.display_name}</h3>
+                        </div>
+                        <div>
+                            <h1>{this.state.count}</h1>
+                        </div>
+                        <div>
+                          <a target="_blank" href={`https://data.austintexas.gov/dataset/${this.props.config.resource_id}`}><p>view data</p></a>
+                        </div>
                 </div>
                 :
                 <div className="card no-border">

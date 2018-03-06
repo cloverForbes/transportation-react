@@ -37,8 +37,7 @@
 .headerCom {
   color: white;
   background-image: url("/img/header.png");
-  margin-left: -15px;
-  margin-right: -15px;
+
 }
 
 .header-menu-button {
@@ -74,4 +73,16 @@
     margin-top: 0;
     font-size: 6vh;
   }
+}
+
+.header-container{
+  display: flex;
+}
+
+.menu-flex{
+  flex-grow: .25;
+}
+
+.text-flex{
+  flex-grow: 8;
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { rename } from "../Helpers";
-import { Grid, Row, Col, Button } from "react-bootstrap";
 import "./Header.css";
 import Quote from "../QuoteOfTheDay/Quote";
 
@@ -18,12 +17,10 @@ export default class Header extends React.Component {
 
   render() {
     return (
-      <Grid fluid={true}>
-        <div
-          className={this.props.title ? "headerCom" : `headerCom headerHome`}
-        >
-          <Row>
-            <Col md={11}>
+      <div>
+        <div className={this.props.title ? "headerCom" : `headerCom headerHome`}>
+          <div className="header-container">
+            <div className="text-flex">
               <h2>
                 {this.props.title
                   ? rename(this.props.title)
@@ -34,18 +31,18 @@ export default class Header extends React.Component {
                   <p>Transportation Data and Performance Hub</p>
                 </Link>
               )}
-            </Col>
-            <Col md={1}>
+            </div>
+            <div className="menu-flex">
               {this.props.title && (
                 <i
                   onClick={this.showMenu}
                   className="fa fa-bars header-menu-button"
                 />
               )}
-            </Col>
-          </Row>
-          <Row style={{ textAlign: "center" }}>
-            <Col md={12} mdOffset={6}>
+            </div>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <div style={{paddingBottom: '10px'}}>
               <ul
                 className="header-menu"
                 style={{ display: this.state.menuVisible ? "" : "none" }}
@@ -60,13 +57,13 @@ export default class Header extends React.Component {
                   );
                 })}
               </ul>
-            </Col>
-          </Row>
+            </div>
+          </div>
         </div>
-        <Row className="row-border">
+        <div className="row-border">
           <Quote />
-        </Row>
-      </Grid>
+        </div>
+      </div>
     );
   }
 }
