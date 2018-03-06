@@ -23,4 +23,5 @@
   height: 78.8vh !important;
   width: 51.8vw !important;
   position: absolute;
+  z-index: 0;
 }
