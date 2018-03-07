@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Doughnut} from 'react-chartjs-2';
 import Chart from 'chart.js';
+import './Charts.css';
 
 Chart.pluginService.register({
   beforeDraw: function (chart) {
@@ -45,7 +45,7 @@ Chart.pluginService.register({
       ctx.fillText(txt, centerX, centerY);
       ctx.font = (fontSizeToUse/2.5)+"px " + fontStyle;
       ctx.fillStyle = 'black';
-      ctx.fillText(txtTwo, centerX, centerY+50);
+      ctx.fillText(txtTwo, centerX, centerY + (centerY / 3));
     }
   }
 });
@@ -69,13 +69,17 @@ export default class DonutWithText extends React.Component {
         hover: {mode: false},
         legend: {display: false},
         tooltips: {enabled: false},
-        showText: true
+        showText: true,
+        maintainAspectRatio: false,
       }
     };
+    console.log(this.props.data);
     return (
       <div>
         <h4 style={{textAlign: 'center'}}>{this.props.title}</h4>
-        <Doughnut options={data.options} data={data} />
+        <div className="doughnut">
+          <Doughnut options={data.options} data={data} />
+        </div>
       </div>
     );
   }

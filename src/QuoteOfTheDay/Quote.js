@@ -26,7 +26,6 @@ export default class Quote extends React.Component {
         data = data[data.length - 1];
         let author = data.attribution;
         let quote = data.quote;
-        console.log(data);
         this.setState({
           quote: quote,
           author: author

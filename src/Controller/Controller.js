@@ -6,6 +6,7 @@ import {rename, filterData, getData, getMarkersFromGroup} from '../Helpers'
 import _ from 'lodash';
 import './controller.css';
 import logo from '../Card/logo.svg';
+import Doughnut from '../Charts/CustomDoughnut';
 
 /*Props: Typically a single config file in the form of a JSON object*/
 
@@ -71,6 +72,10 @@ export default class Controller extends React.Component{
         if(this.props.config.uniqBy){
             data = _.uniqBy(data, this.props.config.uniqBy)
         }
+        if(this.props.getData){
+          this.props.getData(data);
+        }
+        console.log(data);
         return (
             this.state.loading ?
                 <div className="card no-border">
@@ -79,6 +84,16 @@ export default class Controller extends React.Component{
                 :
 
                 <div>
+                  <div className="chart-container">
+                    {this.props.config.charts && this.props.config.charts.map((chart, key) => {
+                      switch(chart.type){
+                        case 'doughnut' : {
+                          return <Doughnut key={key} title={chart.title} data={data} />
+                        }
+                      }
+                    })
+                    }
+                  </div>
                   <div className="filter-container">
                         {this.props.config.headers.map((header, key) => {
                             if(header.filter){

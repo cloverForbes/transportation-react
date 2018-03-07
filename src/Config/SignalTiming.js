@@ -33,5 +33,12 @@ export default {
             opts: {'2016': '2016', '2017': '2017', '2018': '2018', '2019': '2019', '2020': '2020'},
             display_opts: {'2016' : {class: '', color: 'black'}, '2017' : {class: '', color: 'black'}, '2018' : {class: '', color: 'black'}, '2019' : {class: '', color: 'black'}, '2020' : {class: '', color: 'black'}}
         },
+    ],
+    charts: [
+      {
+        title: 'Timed',
+        type: 'doughnut',
+
+      }
     ]
 }
