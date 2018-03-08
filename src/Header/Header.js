@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { rename } from "../Helpers";
+import Proptypes from 'prop-types';
 import "./Header.css";
 import Quote from "../QuoteOfTheDay/Quote";
 
@@ -67,3 +68,8 @@ export default class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  pages: Proptypes.array.isRequired,
+  title: Proptypes.string.isRequired,
+};
