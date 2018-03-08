@@ -7,6 +7,7 @@ import _ from 'lodash';
 import './controller.css';
 import logo from '../Card/logo.svg';
 import Doughnut from '../Charts/CustomDoughnut';
+import Proptypes from 'prop-types';
 
 /*Props: Typically a single config file in the form of a JSON object*/
 
@@ -14,7 +15,9 @@ import Doughnut from '../Charts/CustomDoughnut';
 * by no means a standard or the only way to do things, this is simply my implementation that is free to be reused
 * you are welcome to combine components your own way.*/
 
+
 export default class Controller extends React.Component{
+
     constructor(props){
         super(props);
 
@@ -31,6 +34,7 @@ export default class Controller extends React.Component{
             })
         }
     }
+
 
     /*Function passed to table to pull a new center and the marker information from the table*/
     getPosition = position => {
@@ -75,7 +79,6 @@ export default class Controller extends React.Component{
         if(this.props.getData){
           this.props.getData(data);
         }
-        console.log(data);
         return (
             this.state.loading ?
                 <div className="card no-border">
@@ -113,3 +116,7 @@ export default class Controller extends React.Component{
     }
 }
 
+
+Controller.propTypes = {
+    config: Proptypes.object.isRequired
+};
