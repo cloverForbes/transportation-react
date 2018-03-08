@@ -1,6 +1,7 @@
 import React from "react";
 import { createArray, indexOfValue } from "../Helpers";
 import Select from "react-select";
+import Proptypes from 'prop-types';
 import "react-select/dist/react-select.css";
 import "./filter.css";
 
@@ -15,6 +16,7 @@ import "./filter.css";
 * type: Search or Toggle used to determine which type of filter will be rendered
 * opts: What options can the filter be set to(only used for toggle filter)
 */
+
 export default class Filter extends React.Component {
   constructor(props) {
     super(props);
@@ -83,3 +85,16 @@ export default class Filter extends React.Component {
     );
   }
 }
+
+Filter.propTypes = {
+    myKey: Proptypes.number.isRequired,
+    pullData: Proptypes.func.isRequired,
+    label: Proptypes.string.isRequired,
+    name: Proptypes.string.isRequired,
+    type: Proptypes.oneOf(['toggle','search']),
+    opts: Proptypes.oneOfType([
+        Proptypes.string,
+        Proptypes.object
+    ]),
+
+};
