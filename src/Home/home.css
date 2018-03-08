@@ -17,3 +17,6 @@
   color: white;
   text-decoration: none;
 }
+.home-row:last-child{
+  padding-right: 10px;
+}
