@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { CircleMarker } from "react-leaflet";
 import PopupFrame from "./PopupFrame";
+import Proptypes from 'prop-types'
 /*
 * Custom Circle Marker Exact same as the Custom Marker Except it extends Circle Marker
 */
@@ -13,6 +14,7 @@ import PopupFrame from "./PopupFrame";
 */
 export default class CustomMarker extends CircleMarker {
   render() {
+    console.log(this.props);
     this.leafletElement.bindPopup(
       ReactDOMServer.renderToStaticMarkup(
         <PopupFrame format={this.props.format} info={this.props.info} />
@@ -21,3 +23,11 @@ export default class CustomMarker extends CircleMarker {
     return super.render();
   }
 }
+
+CustomMarker.propTypes = {
+  center: Proptypes.object.isRequired,
+  color: Proptypes.string.isRequired,
+  format: Proptypes.array.isRequired,
+  info: Proptypes.object.isRequired,
+  open: Proptypes.bool.isRequired
+};
