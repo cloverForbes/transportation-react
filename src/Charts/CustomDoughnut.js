@@ -1,6 +1,7 @@
 import React from 'react';
 import {Doughnut} from 'react-chartjs-2';
 import Chart from 'chart.js';
+import {getMarkersFromGroup} from '../Helpers'
 import './Charts.css';
 
 Chart.pluginService.register({
@@ -13,13 +14,13 @@ Chart.pluginService.register({
       let centerConfig = chart.config.options.elements.center || {};
       let fontStyle = centerConfig.fontStyle || 'Arial';
       let sum = chart.config.data.datasets[0].data.reduce((i,j) => i+j);
-      let txt = Math.floor(((chart.config.data.datasets[0].data[0]) / sum) * 100) + '%';
+      let txt = Math.floor(((chart.config.data.datasets[0].data[0]) / (sum === 0 ? 1 : sum)) * 100) + '%';
       let txtTwo = `${chart.config.data.datasets[0].data[0]} of ${sum}`;
       let color = centerConfig.color || chart.config.data.datasets[0].backgroundColor[0];
       let sidePadding = centerConfig.sidePadding || 20;
       let sidePaddingCalculated = (sidePadding/100) * (chart.innerRadius * 2);
       //Start with a base font of 30px
-      ctx.font = "30px " + fontStyle;
+      ctx.font = "28px " + fontStyle;
 
       //Get the width of the string and also the width of the element minus 10 to give it 5px side padding
       let stringWidth = ctx.measureText(txt).width;
@@ -54,12 +55,11 @@ Chart.pluginService.register({
 export default class DonutWithText extends React.Component {
   constructor(props){
     super(props);
-    console.log(this.props)
   }
   render() {
     const data = {
       datasets: [{
-        data: [200, 50],
+        data: [this.props.data.amount, this.props.data.total - this.props.data.amount],
         backgroundColor: [
           '#217d1e',
           '#BFBFBF'
@@ -73,7 +73,6 @@ export default class DonutWithText extends React.Component {
         maintainAspectRatio: false,
       }
     };
-    console.log(this.props.data);
     return (
       <div>
         <h4 style={{textAlign: 'center'}}>{this.props.title}</h4>
@@ -84,5 +83,6 @@ export default class DonutWithText extends React.Component {
     );
   }
 };
+
 
 

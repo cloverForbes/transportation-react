@@ -1,5 +1,6 @@
 import React from "react";
 import { format } from "../Helpers";
+import Proptypes from 'prop-types'
 /*Custom PopUp for Marker*/
 
 /*

@@ -38,7 +38,10 @@ export default {
       {
         title: 'Timed',
         type: 'doughnut',
-
+        key: 'retime_status',
+        value: 'COMPLETED',
+        from_group: true,
+        id:'system_id',
       }
     ]
 }

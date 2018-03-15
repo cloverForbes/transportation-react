@@ -1,6 +1,7 @@
 import React from "react";
 import Circle from "./CustomCircleMarker";
 import Marker from "./CustomMarker";
+import Proptypes from 'prop-types'
 
 /*Creates a list of markers components from a list of marker information*/
 
@@ -15,7 +16,9 @@ import Marker from "./CustomMarker";
 * type: Circle or Default
 */
 
-export default class extends React.Component {
+
+
+export default class Markers extends React.Component {
   constructor(props) {
     super(props);
     if (this.props.color) {
@@ -101,3 +104,9 @@ export default class extends React.Component {
     );
   }
 }
+
+Markers.propTypes = {
+    color: Proptypes.object,
+    fromGroup: Proptypes.object,
+
+};

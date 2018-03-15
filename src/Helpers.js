@@ -139,7 +139,8 @@ export function getMarkersFromGroup(group, markersURL, id, state) {
           dataArr.push(data);
           if (dataArr.length === len) {
             state.setState({
-              markers: _.flattenDeep(dataArr)
+              markers: _.flattenDeep(dataArr),
+              loading: false,
             });
           }
         });
@@ -193,4 +194,8 @@ export function filterData(data, filters, name) {
     });
   });
   return tmpData;
+}
+
+export function getNumberForChart(arr, match){
+
 }

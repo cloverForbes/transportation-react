@@ -2,6 +2,7 @@ import React from "react";
 import { Map, TileLayer } from "react-leaflet";
 import Markers from "./Markers";
 import { getData, getMarkersFromGroup } from "../Helpers";
+import Proptypes from 'prop-types'
 import logo from "../Card/logo.svg";
 import "./Map.css";
 /*Map Component, uses leaflet for base component, but adds functionality
@@ -12,6 +13,7 @@ import "./Map.css";
 *Props:
 * bounds: Used for fromGroup markers to allow a selection of markers
 */
+
 export default class Transport_Map extends React.Component {
   constructor(props) {
     super(props);
@@ -23,28 +25,33 @@ export default class Transport_Map extends React.Component {
       loading: true,
       latlng: this.props.center
     };
+
   }
 
-  componentWillMount() {
-    if (this.props.url) {
-      getData(this.props.url, this);
-    } else {
-      if (this.props.fromGroup) {
-        getMarkersFromGroup(
-          this.props.markers,
-          this.props.fromGroup.url,
-          this.props.fromGroup.id,
-          this
-        );
+  componentDidMount(){
+      if (this.props.url) {
+          getData(this.props.url, this);
+      } else {
+          if (this.props.fromGroup) {
+              getMarkersFromGroup(
+                  this.props.markers,
+                  this.props.fromGroup.url,
+                  this.props.fromGroup.id,
+                  this
+              );
+          }
       }
-      this.setState({
-        loading: false
-      });
-    }
+      /*console.log(this.state.markers);
+      console.log(this.props.markers);
+      this.props.graphMarkers(this.state.markers, this.props.markers);*/
+
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.fromGroup) {
+        this.setState({
+            loading: true
+        });
       getMarkersFromGroup(
         nextProps.markers,
         nextProps.fromGroup.url,
@@ -59,8 +66,24 @@ export default class Transport_Map extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps,nextState) {
+      /*return (this.props.markers === nextProps.markers)*/
+      /* console.log('new');
+       console.log(this.props.markers);
+       console.log(nextProps.markers);
+
+       console.log(this.state.markers);
+       console.log(nextState.markers);*/
+      return ((this.state.markers.length !== nextState.markers.length && nextProps.markers.length <= nextState.markers.length) || this.props.markers.length !== nextProps.markers.length)
+  }
+
+
+
+  componentWillUpdate(a,b){
+  }
+
   render() {
-    return !this.state.loading ? (
+      return !this.state.loading ? (
       <div className="flex-map" style={{ textAlign: "center" }}>
         <Map
           bounds={this.props.bounds}

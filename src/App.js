@@ -3,7 +3,6 @@ import Controller from "./Controller/Controller";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch,
   Redirect
 } from "react-router-dom";
@@ -66,7 +65,7 @@ export default class App extends React.Component {
   }
 }
 
-const home = () => <Home links={pages} />;
+const home = () => <Home links={pages}  think={'blah'}/>;
 
 const signalFlash = () => (
   <div>

@@ -71,5 +71,5 @@ export default class Header extends React.Component {
 
 Header.propTypes = {
   pages: Proptypes.array.isRequired,
-  title: Proptypes.string.isRequired,
+  title: Proptypes.string
 };
