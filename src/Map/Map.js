@@ -15,7 +15,7 @@ import "./Map.css";
 export default class Transport_Map extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log(this.props);
     this.state = {
       animate: true,
       markers: [],
@@ -27,16 +27,8 @@ export default class Transport_Map extends React.Component {
 
   componentWillMount() {
     if (this.props.url) {
-      getData(this.props.url, this);
+      getData(this.props.url)
     } else {
-      if (this.props.fromGroup) {
-        getMarkersFromGroup(
-          this.props.markers,
-          this.props.fromGroup.url,
-          this.props.fromGroup.id,
-          this
-        );
-      }
       this.setState({
         loading: false
       });
@@ -44,14 +36,6 @@ export default class Transport_Map extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.fromGroup) {
-      getMarkersFromGroup(
-        nextProps.markers,
-        nextProps.fromGroup.url,
-        nextProps.fromGroup.id,
-        this
-      );
-    }
     if (nextProps.markers !== this.props.markers) {
       this.setState({
         markers: nextProps.markers
@@ -76,9 +60,7 @@ export default class Transport_Map extends React.Component {
             type={this.props.marker_type}
             color={this.props.color}
             match={this.props.match}
-            markers={
-              this.props.fromGroup ? this.state.markers : this.props.markers
-            }
+            markers={this.props.markers}
             headers={this.props.headers}
           />
         </Map>

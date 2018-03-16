@@ -54,7 +54,6 @@ Chart.pluginService.register({
 export default class DonutWithText extends React.Component {
   constructor(props){
     super(props);
-    console.log(this.props)
   }
   render() {
     const data = {
@@ -73,7 +72,6 @@ export default class DonutWithText extends React.Component {
         maintainAspectRatio: false,
       }
     };
-    console.log(this.props.data);
     return (
       <div>
         <h4 style={{textAlign: 'center'}}>{this.props.title}</h4>

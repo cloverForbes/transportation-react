@@ -14,7 +14,6 @@ import Proptypes from 'prop-types'
 */
 export default class CustomMarker extends CircleMarker {
   render() {
-    console.log(this.props);
     this.leafletElement.bindPopup(
       ReactDOMServer.renderToStaticMarkup(
         <PopupFrame format={this.props.format} info={this.props.info} />

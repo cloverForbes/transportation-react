@@ -2,7 +2,7 @@ import  React from 'react';
 import  Map from '../Map/Map';
 import Table from '../Table/Table'
 import Filter from '../Filter/Filter'
-import {rename, filterData, getData, getMarkersFromGroup} from '../Helpers'
+import {rename, filterData, getData, getMarkersFromGroup, markersFromGroup} from '../Helpers'
 import _ from 'lodash';
 import './controller.css';
 import logo from '../Card/logo.svg';
@@ -26,18 +26,47 @@ export default class Controller extends React.Component{
             markers: [],
             marker: '',
             filters:[],
+            originalData: [],
+            originalMarkers: [],
             data: [],
             group: [],
             loading: true,
             opts: this.props.config.headers.map(item => {
                 return item.opts ? {name: item.name, opts: item.opts} : null
             })
+        };
+
+        if(this.props.config.url){
+            getData(this.props.config.url)
+                .then(function(res) {
+                    return res;
+                })
+                .then(resp => {
+                    return resp.json();
+                })
+                .then(data => {
+                    if (this.props.config.fromGroup) {
+                        getMarkersFromGroup(
+                            data,
+                            this.props.config.fromGroup.url,
+                            this.props.config.fromGroup.id,
+                            this
+                        );
+                    }
+
+                    this.setState({
+                        data: data,
+                        originalData: data,
+                        loading: !!this.props.config.fromGroup
+                    });
+                });
         }
     }
 
 
     /*Function passed to table to pull a new center and the marker information from the table*/
     getPosition = position => {
+        console.log(position);
         if(!this.props.config.fromGroup){
             let newPosition = [];
             newPosition.push(Number(position.location_latitude));
@@ -56,29 +85,27 @@ export default class Controller extends React.Component{
 
     /*Function used to pull filter information from filter components*/
     pullData = (data, key) => {
+        console.log(data);
         let tmpFilters = this.state.filters;
         tmpFilters[key] = data;
+        data = filterData(this.state.originalData, tmpFilters, this.props.config.string_filter);
+        if(this.props.config.uniqBy){
+            data = _.uniqBy(data, this.props.config.uniqBy)
+        }
         this.setState({
-            filters: tmpFilters
+            loading: true
+        });
+        let markers = markersFromGroup(this.state.originalMarkers, data, this.props.config.fromGroup.id);
+        this.setState({
+            filters: tmpFilters,
+            data: data,
+            markers: markers,
+            loading: false,
         })
     };
 
 
-    componentWillMount(){
-        if(this.props.config.url){
-            getData(this.props.config.url, this);
-        }
-    }
-
-
     render(){
-        let data = filterData(this.state.data, this.state.filters, this.props.config.string_filter);
-        if(this.props.config.uniqBy){
-            data = _.uniqBy(data, this.props.config.uniqBy)
-        }
-        if(this.props.getData){
-          this.props.getData(data);
-        }
         return (
             this.state.loading ?
                 <div className="card no-border">
@@ -91,7 +118,7 @@ export default class Controller extends React.Component{
                     {this.props.config.charts && this.props.config.charts.map((chart, key) => {
                       switch(chart.type){
                         case 'doughnut' : {
-                          return <Doughnut key={key} title={chart.title} data={data} />
+                          return <Doughnut key={key} title={chart.title} data={this.state.data} />
                         }
                       }
                     })
@@ -107,8 +134,8 @@ export default class Controller extends React.Component{
                         })}
                   </div>
                   <div className="controller-container">
-                    <Table className="flex-table" fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} data={data}  filter={this.state.filters} getPosition={this.getPosition} headers={this.props.config.headers}/>
-                    <Map className="flex-map" id={this.state.id ? this.state.id : -1} bounds={this.state.bounds} fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} marker_type={this.props.config.marker_type} color={this.props.config.headers[this.props.config.color]} match={this.props.config.id_match} headers={this.props.config.headers} marker={this.props.config.fromGroup ? this.state.group: this.state.marker}  markers={data} center={this.state.position}/>
+                    <Table className="flex-table" fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} data={this.state.data}  filter={this.state.filters} getPosition={this.getPosition} headers={this.props.config.headers}/>
+                    <Map className="flex-map" id={this.state.id ? this.state.id : -1} bounds={this.state.bounds} fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} marker_type={this.props.config.marker_type} color={this.props.config.headers[this.props.config.color]} match={this.props.config.id_match} headers={this.props.config.headers} marker={this.props.config.fromGroup ? this.state.group: this.state.marker}  markers={this.props.config.fromGroup ? this.state.markers: this.state.data} center={this.state.position}/>
                   </div>
                 </div>
 

@@ -98,6 +98,7 @@ export function indexOfValue(arr, value) {
 export function getMarkersFromGroup(group, markersURL, id, state) {
   let len = group.length;
   let dataArr = [];
+  console.log(group);
   group.forEach(i => {
     let url = `${markersURL}?$query=SELECT * WHERE ${id}=${i[id]}`;
     let headers = new Headers();
@@ -107,7 +108,6 @@ export function getMarkersFromGroup(group, markersURL, id, state) {
       mode: "cors",
       cache: "default"
     };
-
     if (len === 1) {
       fetch(url, myInit)
         .then(function(res) {
@@ -139,7 +139,9 @@ export function getMarkersFromGroup(group, markersURL, id, state) {
           dataArr.push(data);
           if (dataArr.length === len) {
             state.setState({
-              markers: _.flattenDeep(dataArr)
+              originalMarkers: _.flattenDeep(dataArr),
+              markers: _.flattenDeep(dataArr),
+              loading: false
             });
           }
         });
@@ -156,19 +158,7 @@ export function getData(url, state) {
     cache: "default"
   };
 
-  fetch(url, myInit)
-    .then(function(res) {
-      return res;
-    })
-    .then(resp => {
-      return resp.json();
-    })
-    .then(data => {
-      state.setState({
-        loading: false,
-        data: data
-      });
-    });
+  return fetch(url, myInit)
 }
 
 function findMedianLatLng(locationArray) {
@@ -193,4 +183,17 @@ export function filterData(data, filters, name) {
     });
   });
   return tmpData;
+}
+
+export function markersFromGroup(markers,fromGroup, id){
+  let outputArr = [];
+  markers.forEach(marker => {
+    fromGroup.forEach(group => {
+      if(marker[id] === group[id]){
+        outputArr.push(marker);
+      }
+    });
+  });
+
+  return outputArr;
 }
