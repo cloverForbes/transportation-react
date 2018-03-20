@@ -16,6 +16,12 @@ export default class Header extends React.Component {
     });
   };
 
+  hideMenu = () => {
+    this.setState({
+        menuVisible: false
+    })
+  };
+
   render() {
     return (
       <div>
@@ -28,7 +34,7 @@ export default class Header extends React.Component {
                   : "Austin Transportation Hub"}
               </h2>
               {this.props.title && (
-                <Link to="/">
+                <Link onClick={this.hideMenu} to="/">
                   <p>Transportation Data and Performance Hub</p>
                 </Link>
               )}
