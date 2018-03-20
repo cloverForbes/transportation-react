@@ -119,10 +119,11 @@ export function getMarkersFromGroup(group, markersURL, id, state) {
         .then(data => {
           dataArr.push(data);
           if (dataArr.length === len) {
+            console.log('hi');
             state.setState({
               group: group,
               bounds: findMedianLatLng(data),
-              markers: _.flattenDeep(dataArr),
+              selected: _.flattenDeep(dataArr),
               id: group[0][id]
             });
           }
