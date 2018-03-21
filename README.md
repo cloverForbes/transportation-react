@@ -1,18 +1,18 @@
-#Placeholder Name
+# Placeholder Name
 
-##Table of Contents
+## Table of Contents
 * [About](#about)
 * [Getting Started](#getting-started)
 * [Components](#components)
  
 
-##About
+## About
 Placeholder is a project for the Austin Transportation Department. This project takes previously created pages and makes
 them into re-usable components.
 
-##Getting Started
+## Getting Started
 
-##Components
+## Components
 * [Controller](#controller)
 * [Table](#table)
 * [Filter](#filter)
@@ -23,12 +23,12 @@ them into re-usable components.
 * [Custom Circle Marker](#custom-circle-marker)
 * [Popup Frame](#popup-frame)
 
-###Controller
-###Table
-###Filter
-###Charts
-###Map
-###Markers
-###Custom Marker
-###Custom Circle Marker
-###Popup Frame
+### Controller
+### Table
+### Filter
+### Charts
+### Map
+### Markers
+### Custom Marker
+### Custom Circle Marker
+### Popup Frame
