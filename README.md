@@ -35,8 +35,16 @@ filter: Array
 fromGroup: Object  
 getPosition: Func  
 headers: Array of Objects
+
 ### Filter
+Filter are components that take user input and push that data to parent component. 
 ##### Props
+myKey: Number  
+pullData: Func()  
+label: String  
+name: String  
+type: String['toggle' or 'search']
+opts: String or Object
 
 ### Charts
 ##### Props
