@@ -95,7 +95,11 @@ info: Object
 open: Boolean
 
 ### Popup Frame
+Component that binds to Custom Marker to show details
 ##### Props
-
+format: Array  
+info: Object
 ### Card
+Component Used to pull information from given URL and display it in a Card
 ##### Props
+TODO: Cleanup
