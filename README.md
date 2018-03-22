@@ -37,7 +37,7 @@ getPosition: Func
 headers: Array of Objects
 
 ### Filter
-Filter are components that take user input and push that data to parent component. 
+Filters are components that take user input and push that data to parent component. 
 ##### Props
 myKey: Number  
 pullData: Func()  
@@ -47,13 +47,35 @@ type: String['toggle' or 'search']
 opts: String or Object
 
 ### Charts
+TODO: More Charts currently only Doughnut
+
 ##### Props
 
 ### Map
+Map is a component that uses Leaflet-React that interacts with Table and Filter using a controller
+
 ##### Props
+bounds:  
+center: Array  
+color: Object 
+fromGroup: Object  
+headers: Array
+id: Number  
+marker: Object  
+markers: Array
+marker_type: String['circle' or 'default']  
+match: String
 
 ### Markers
+Markers decides type of marker and passes the markers to the map. 
 ##### Props
+color: String  
+fromGroup: Object  
+headers: Array  
+id: Number  
+marker: Object  
+match: ?  
+type: String['circle' or 'default']  
 
 ### Custom Marker
 ##### Props
