@@ -59,7 +59,7 @@ bounds:
 center: Array  
 color: Object 
 fromGroup: Object  
-headers: Array
+headers: Array  
 id: Number  
 marker: Object  
 markers: Array
@@ -78,10 +78,21 @@ match: ?
 type: String['circle' or 'default']  
 
 ### Custom Marker
+CustomMarker, this is solely used to bind a Custom PopUp to Marker.  
+<b>Not used to create custom markers</b>
 ##### Props
-
+format: Array  
+info: Object  
+open: Boolean
 ### Custom Circle Marker
+Custom Circle Marker Exact same as the Custom Marker Except it extends Circle Marker
+
 ##### Props
+center: Object  
+color: String  
+format: Array  
+info: Object  
+open: Boolean
 
 ### Popup Frame
 ##### Props
