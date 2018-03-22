@@ -95,7 +95,10 @@ export default class Controller extends React.Component{
         this.setState({
             loading: true
         });
-        let markers = markersFromGroup(this.state.originalMarkers, data, this.props.config.fromGroup.id);
+        let markers = [];
+        if(this.props.config.fromGroup){
+            markers = markersFromGroup(this.state.originalMarkers, data, this.props.config.fromGroup.id);
+        }
         this.setState({
             filters: tmpFilters,
             data: data,
