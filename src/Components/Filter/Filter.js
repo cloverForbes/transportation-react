@@ -1,5 +1,5 @@
 import React from "react";
-import { createArray, indexOfValue } from "../Helpers";
+import { createArray, indexOfValue } from "../../Helpers";
 import Select from "react-select";
 import Proptypes from 'prop-types';
 import "react-select/dist/react-select.css";

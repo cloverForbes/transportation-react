@@ -1,5 +1,5 @@
 import React from "react";
-import Controller from "./Controller/Controller";
+import Controller from "./Components/Controller/Controller";
 import {
   BrowserRouter as Router,
   Route,
@@ -11,10 +11,10 @@ import SignalFlashing from "./Config/SignalFlashing";
 import SignalRequest from "./Config/SignalRequest";
 import SignalProjects from "./Config/SignalProjects";
 import SignalTiming from "./Config/SignalTiming";
-import Cards from "./Card/Operations";
-import Card from "./Card/Card";
-import Header from "./Header/Header";
-import Home from "./Home/Home";
+import Cards from "./Components/Card/Operations";
+import Card from "./Components/Card/Card";
+import Header from "./Components/Header/Header";
+import Home from "./Components/Home/Home";
 let card = {
   id: "signals-on-flash",
   row_container_id: "panel-row-3",

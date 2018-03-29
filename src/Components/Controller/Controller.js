@@ -2,7 +2,7 @@ import  React from 'react';
 import  Map from '../Map/Map';
 import Table from '../Table/Table'
 import Filter from '../Filter/Filter'
-import {rename, filterData, getData, getMarkersFromGroup, markersFromGroup} from '../Helpers'
+import {rename, filterData, getData, getMarkersFromGroup, markersFromGroup} from '../../Helpers'
 import _ from 'lodash';
 import './controller.css';
 import logo from '../Card/logo.svg';

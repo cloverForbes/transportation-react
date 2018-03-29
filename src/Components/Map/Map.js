@@ -1,7 +1,7 @@
 import React from "react";
 import { Map, TileLayer } from "react-leaflet";
 import Markers from "./Markers";
-import { getData, getMarkersFromGroup } from "../Helpers";
+import { getData, getMarkersFromGroup } from "../../Helpers";
 import logo from "../Card/logo.svg";
 import "./Map.css";
 /*Map Component, uses leaflet for base component, but adds functionality
@@ -15,7 +15,6 @@ import "./Map.css";
 export default class Transport_Map extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.state = {
       animate: true,
       markers: [],
@@ -43,8 +42,7 @@ export default class Transport_Map extends React.Component {
     }
   }
 
-  render() {
-    return !this.state.loading ? (
+  render() {      return !this.state.loading ? (
       <div className="flex-map" style={{ textAlign: "center" }}>
         <Map
           bounds={this.props.bounds}

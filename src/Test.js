@@ -1,5 +1,5 @@
 import React from "react";
-import Doughnut from './Charts/CustomDoughnut'
+import Doughnut from './Components/Charts/CustomDoughnut'
 
 
 
